@@ -17,6 +17,8 @@
 		B4E8E5FE286CE65500A6B33F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E5FD286CE65500A6B33F /* HomeViewModel.swift */; };
 		B4E8E601286CE78E00A6B33F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B4E8E600286CE78E00A6B33F /* SnapKit */; };
 		B4E8E604286CE9F800A6B33F /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E603286CE9F800A6B33F /* CityCell.swift */; };
+		B4E8E607286CF12900A6B33F /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E606286CF12900A6B33F /* BusinessViewController.swift */; };
+		B4E8E609286CFB8C00A6B33F /* BusinessLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E608286CFB8C00A6B33F /* BusinessLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 		B4E8E5F9286CE3F400A6B33F /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		B4E8E5FD286CE65500A6B33F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B4E8E603286CE9F800A6B33F /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
+		B4E8E606286CF12900A6B33F /* BusinessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
+		B4E8E608286CFB8C00A6B33F /* BusinessLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				B4E8E5F9286CE3F400A6B33F /* City.swift */,
+				B4E8E608286CFB8C00A6B33F /* BusinessLoader.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -114,6 +119,7 @@
 			children = (
 				B4E8E5FD286CE65500A6B33F /* HomeViewModel.swift */,
 				B4E8E5E8286CDB8100A6B33F /* HomeViewController.swift */,
+				B4E8E606286CF12900A6B33F /* BusinessViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,7 +201,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4E8E607286CF12900A6B33F /* BusinessViewController.swift in Sources */,
 				B4E8E5E9286CDB8100A6B33F /* HomeViewController.swift in Sources */,
+				B4E8E609286CFB8C00A6B33F /* BusinessLoader.swift in Sources */,
 				B4E8E5E5286CDB8100A6B33F /* AppDelegate.swift in Sources */,
 				B4E8E604286CE9F800A6B33F /* CityCell.swift in Sources */,
 				B4E8E5FA286CE3F400A6B33F /* City.swift in Sources */,

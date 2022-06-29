@@ -33,7 +33,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func showBusiness(in city: String) {
-        let businessVC = BusinessViewController()
+        let apiService = APIService(httpClient: URLSessionHTTPClient())
+        let viewModel = BusinessViewModel(apiService: apiService, location: city)
+        
+        let businessVC = BusinessViewController(viewModel: viewModel)
         self.navigationController?.pushViewController(businessVC, animated: true)
     }
 

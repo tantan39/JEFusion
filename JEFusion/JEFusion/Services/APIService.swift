@@ -13,7 +13,7 @@ let ROOT = "https://api.yelp.com/v3/businesses"
 
 struct Endpoint {
     static let fetchBusinesses: (_ location: String, _ limit: Int) -> String = { location, limit in
-        return "\(ROOT)/search/?location=\(location)&limit=\(limit)"
+        return "\(ROOT)/search?location=\(location)&limit=\(limit)"
     }
 
 }
@@ -39,7 +39,8 @@ class APIService: BusinessLoader {
     }
     
     func fetchBusinesses(by location: String) -> AnyPublisher<[BusinessModel], Error> {
-        let url = URL(string: Endpoint.fetchBusinesses(location, 10))!
+        let strUrl = Endpoint.fetchBusinesses(location, 10).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        let url = URL(string: strUrl)!
         
         return Deferred {
             Future() { promise in

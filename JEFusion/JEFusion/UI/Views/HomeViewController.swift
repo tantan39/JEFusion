@@ -21,15 +21,15 @@ class HomeViewController: UITableViewController {
     }
     
     private func setTableViewDatasource() {
-        var snapshot = NSDiffableDataSourceSnapshot<Int,City>()
+        var snapshot = NSDiffableDataSourceSnapshot<Int,CityCellController>()
         snapshot.appendSections([0])
-        snapshot.appendItems(viewModel.cities, toSection: 0)
+        snapshot.appendItems(viewModel.cities.map { CityCellController(title: $0.title) }, toSection: 0)
         self.datasource.apply(snapshot, animatingDifferences: false)
     }
     
     // MARK: - TableView Datasource/Delegate
     
-    lazy var datasource = UITableViewDiffableDataSource<Int, City>(tableView: tableView) { [weak self] tableView, indexPath, city in
+    lazy var datasource = UITableViewDiffableDataSource<Int, CityCellController>(tableView: tableView) { [weak self] tableView, indexPath, city in
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell") as? CityCell else { return UITableViewCell() }
         let city = city
         cell.titleLabel.text = city.title
@@ -40,5 +40,8 @@ class HomeViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.onSelected?(indexPath.row)
+    }
 }

@@ -7,6 +7,10 @@
 
 import UIKit
 
+struct CityCellController: Hashable {
+    let title: String
+}
+
 class CityCell: UITableViewCell {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -31,5 +35,9 @@ class CityCell: UITableViewCell {
             make.trailing.equalToSuperview().offset(-8)
             make.centerY.equalToSuperview()
         }
+    }
+    
+    func setValue(_ controller: CityCellController) {
+        titleLabel.text = controller.title
     }
 }

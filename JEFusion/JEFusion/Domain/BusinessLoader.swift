@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import Combine
 
 protocol BusinessLoader {
-    func fetchBusinesses(by location: String, completion: (Result<[BusinessModel], Error>) -> Void)
+    func fetchBusinesses(by location: String) -> AnyPublisher<[BusinessModel], Error>
 }
 
 
-class BusinessModel {
+class BusinessModel: Decodable {
     let id: String
     let name: String
     let isLiked: Bool

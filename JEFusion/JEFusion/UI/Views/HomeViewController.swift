@@ -17,12 +17,17 @@ class HomeViewController: UITableViewController {
         view.backgroundColor = .white
         tableView.register(CityCell.self, forCellReuseIdentifier: "CityCell")
 
+        setTableViewDatasource()
+    }
+    
+    private func setTableViewDatasource() {
         var snapshot = NSDiffableDataSourceSnapshot<Int,City>()
         snapshot.appendSections([0])
         snapshot.appendItems(viewModel.cities, toSection: 0)
         self.datasource.apply(snapshot, animatingDifferences: false)
-        
     }
+    
+    // MARK: - TableView Datasource/Delegate
     
     lazy var datasource = UITableViewDiffableDataSource<Int, City>(tableView: tableView) { [weak self] tableView, indexPath, city in
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell") as? CityCell else { return UITableViewCell() }
@@ -35,31 +40,4 @@ class HomeViewController: UITableViewController {
         return 60
     }
 
-}
-
-class CityCell: UITableViewCell {
-    lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupUI()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setupUI() {
-        addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(8)
-            make.trailing.equalToSuperview().offset(-8)
-            make.centerY.equalToSuperview()
-        }
-    }
 }

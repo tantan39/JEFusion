@@ -58,10 +58,10 @@ class BusinessViewController: UITableViewController {
         viewModel?.loadBusinesses()
     }
     
-    private func set(_ newItems: [CityCellController]) {
+    private func set(_ items: [CityCellController]) {
         var snapshot = NSDiffableDataSourceSnapshot<Int,CityCellController>()
         snapshot.appendSections([0])
-        snapshot.appendItems(newItems, toSection: 0)
+        snapshot.appendItems(items, toSection: 0)
         self.datasource.apply(snapshot, animatingDifferences: false)
     }
     

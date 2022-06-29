@@ -10,7 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    var navigationController: UINavigationController?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -18,8 +18,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = HomeViewController()
+        
+        let viewModel = HomeViewModel()
+        let homeViewController = HomeViewController(viewModel)
+        self.navigationController = UINavigationController(rootViewController: homeViewController)
+        window?.rootViewController = navigationController
+        
+        homeViewController.onSelected = { [weak self] index in
+            guard let self = self else { return }
+            self.showBusiness(in: viewModel.cities[index].title)
+        }
+        
         window?.makeKeyAndVisible()
+    }
+    
+    private func showBusiness(in city: String) {
+        let businessVC = UIViewController()
+        self.navigationController?.pushViewController(businessVC, animated: true)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -9,8 +9,14 @@ import UIKit
 import SnapKit
 
 class HomeViewController: UITableViewController {
-    let viewModel: HomeViewModel = HomeViewModel()
+    var viewModel: HomeViewModel?
+    var onSelected: ((Int) -> Void)?
     
+    convenience init(_ viewModel: HomeViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
+     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -21,9 +27,10 @@ class HomeViewController: UITableViewController {
     }
     
     private func setTableViewDatasource() {
+        guard let vm = viewModel else { return }
         var snapshot = NSDiffableDataSourceSnapshot<Int,CityCellController>()
         snapshot.appendSections([0])
-        snapshot.appendItems(viewModel.cities.map { CityCellController(title: $0.title) }, toSection: 0)
+        snapshot.appendItems(vm.cities.map { CityCellController(title: $0.title) }, toSection: 0)
         self.datasource.apply(snapshot, animatingDifferences: false)
     }
     

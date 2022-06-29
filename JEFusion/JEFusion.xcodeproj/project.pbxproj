@@ -20,6 +20,7 @@
 		B4E8E607286CF12900A6B33F /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E606286CF12900A6B33F /* BusinessViewController.swift */; };
 		B4E8E609286CFB8C00A6B33F /* BusinessLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E608286CFB8C00A6B33F /* BusinessLoader.swift */; };
 		B4E8E60B286CFD8F00A6B33F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E60A286CFD8F00A6B33F /* APIService.swift */; };
+		B4E8E60D286D008200A6B33F /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E60C286D008200A6B33F /* URLSessionHTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		B4E8E606286CF12900A6B33F /* BusinessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
 		B4E8E608286CFB8C00A6B33F /* BusinessLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessLoader.swift; sourceTree = "<group>"; };
 		B4E8E60A286CFD8F00A6B33F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		B4E8E60C286D008200A6B33F /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				B4E8E60A286CFD8F00A6B33F /* APIService.swift */,
+				B4E8E60C286D008200A6B33F /* URLSessionHTTPClient.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -205,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4E8E607286CF12900A6B33F /* BusinessViewController.swift in Sources */,
+				B4E8E60D286D008200A6B33F /* URLSessionHTTPClient.swift in Sources */,
 				B4E8E5E9286CDB8100A6B33F /* HomeViewController.swift in Sources */,
 				B4E8E609286CFB8C00A6B33F /* BusinessLoader.swift in Sources */,
 				B4E8E5E5286CDB8100A6B33F /* AppDelegate.swift in Sources */,

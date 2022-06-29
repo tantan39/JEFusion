@@ -23,7 +23,6 @@ class BusinessViewModel {
         guard let loader = loader else { return }
         loader.fetchBusinesses(by: location)
             .sink { error in
-                debugPrint("Failed \(error)")
             } receiveValue: { items in
                 print("items \(items)")
                 self.businesses = items

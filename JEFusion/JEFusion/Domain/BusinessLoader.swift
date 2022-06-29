@@ -14,8 +14,8 @@ protocol BusinessLoader {
 
 
 class BusinessModel: Decodable {
-    let id: String?
-    let name: String?
+    let id: String
+    let name: String
     let isLiked: Bool?
     
     init(id: String, name: String, isLiked: Bool) {

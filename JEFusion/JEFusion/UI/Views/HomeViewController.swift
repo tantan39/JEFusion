@@ -33,6 +33,7 @@ class HomeViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell") as? CityCell else { return UITableViewCell() }
         let city = city
         cell.titleLabel.text = city.title
+        cell.separatorInset = UIEdgeInsets(top: 0, left: -1000, bottom: 0, right: 0)
         return cell
     }
     

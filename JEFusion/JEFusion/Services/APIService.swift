@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-let API_Key = "d30196018ffea96c0d32f84262af7fe6"
+let API_Key = "kWcQi-_11RNr5HC7w8wAe-BQyxndGeGY84AGjtSq8JurIWBrXbCcyKLx02k0llcMTc2ytj-Yga-JUHNX1DP1voqPR2yPHxh0m7jhJFPJDV23fpPNBWXTAheM-qG8YnYx"
 let ROOT = "https://api.yelp.com/v3/businesses"
 
 struct Endpoint {

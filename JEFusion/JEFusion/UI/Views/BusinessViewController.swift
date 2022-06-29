@@ -22,6 +22,7 @@ class BusinessViewModel {
     func loadBusinesses() {
         guard let loader = loader else { return }
         loader.fetchBusinesses(by: location)
+            .receive(on: DispatchQueue.main, options: .none)
             .sink { error in
             } receiveValue: { items in
                 print("items \(items)")

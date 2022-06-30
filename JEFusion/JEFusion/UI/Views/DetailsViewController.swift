@@ -11,12 +11,14 @@ import Combine
 
 class DetailsViewModel {
     private var loader: BusinessLoader
+    private var store: BusinessStore
     var business: BusinessModel
     @Published var reviews: [Review] = []
     private var cancellables = Set<AnyCancellable>()
     
-    init(loader: BusinessLoader, business: BusinessModel) {
+    init(loader: BusinessLoader, store: BusinessStore, business: BusinessModel) {
         self.loader = loader
+        self.store = store
         self.business = business
     }
     
@@ -28,6 +30,13 @@ class DetailsViewModel {
             }.store(in: &cancellables)
     }
     
+    func updateLikeModel() {
+        guard let isLiked = business.isLiked else { return }
+        self.store.updateLikeModel(business.id, isLiked: isLiked)
+            .sink(receiveCompletion: { _ in }, receiveValue: { success in
+                print("Updating \(success)")
+            }).store(in: &cancellables)
+    }
 }
 
 class DetailsViewController: UIViewController {
@@ -171,6 +180,7 @@ class DetailsViewController: UIViewController {
         guard let vm = viewModel else { return }
         vm.business.isLiked?.toggle()
         updateLikeIcon(vm.business.isLiked ?? false)
+        vm.updateLikeModel()
     }
     
     private func setValue() {

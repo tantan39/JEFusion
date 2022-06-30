@@ -52,7 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func showDetails(_ business: BusinessModel) {
-        let viewModel = DetailsViewModel(loader: apiService, business: business)
+        let viewModel = DetailsViewModel(loader: apiService, store: coreDataService, business: business)
         let detailsVC = DetailsViewController(viewModel)
         self.navigationController?.pushViewController(detailsVC, animated: true)
     }

@@ -73,6 +73,30 @@ extension CoreDataBusinessStore: BusinessStore {
         }
         .eraseToAnyPublisher()
     }
+    
+    func updateLikeModel(_ id: String, isLiked: Bool) -> AnyPublisher<Bool, Error> {
+        let context = self.context
+        return Deferred {
+            Future { promise in
+                context.perform {
+                    do {
+                        let request = NSFetchRequest<ManagedLike>(entityName: ManagedLike.entity().name!)
+                        request.predicate = NSPredicate(format: "id LIKE %@", id)
+                        if let result = try context.fetch(request).first {
+                            result.isLiked = isLiked
+                            try? context.save()
+                            promise(.success(true))
+                        }
+                        
+                    } catch {
+                        debugPrint("Retrive data failed \(error)")
+                    }
+                }
+            }
+            
+        }
+        .eraseToAnyPublisher()
+    }
 }
 
 extension NSPersistentContainer {

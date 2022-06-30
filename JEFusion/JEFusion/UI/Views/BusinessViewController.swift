@@ -24,7 +24,11 @@ class BusinessViewController: UITableViewController {
         tableView.register(BusinessItemCell.self, forCellReuseIdentifier: "BusinessItemCell")
         
         binding()
-        loadBusinesses()
+        viewModel?.loadBusinesses()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        viewModel?.retrieveBusinessLikes()
     }
     
     private func binding() {
@@ -33,10 +37,6 @@ class BusinessViewController: UITableViewController {
             self?.set(controllers)
         }).store(in: &cancellables)
         
-    }
-    
-    private func loadBusinesses() {
-        viewModel?.loadBusinesses()
     }
     
     private func set(_ items: [BusinessItemCellController]) {

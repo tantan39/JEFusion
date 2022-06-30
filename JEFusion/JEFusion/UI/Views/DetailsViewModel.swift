@@ -33,7 +33,7 @@ class DetailsViewModel {
         guard let isLiked = business.isLiked else { return }
         self.store.updateLikeModel(business.id, isLiked: isLiked)
             .sink(receiveCompletion: { _ in }, receiveValue: { success in
-                print("Updating \(success)")
+                print("Like updating... \(success)")
             }).store(in: &cancellables)
     }
 }

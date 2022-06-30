@@ -27,20 +27,18 @@ class BusinessViewModel: ObservableObject {
         store?.retrieveBusinessLike()
             .receive(on: DispatchQueue.main, options: .none)
             .sink(receiveCompletion: { _ in }, receiveValue: { models in
-                print("likes \(models)")
                 self.likes = models
-                for (idx, business) in self.businesses.enumerated() {
-                    if let likeModel = self.likes.first(where: { $0.businessId == business.id} ) {
-                        self.businesses[idx].isLiked = likeModel.isLiked
+                for business in self.businesses {
+                    if let _ = self.likes.first(where: { $0.businessId == business.id} ) {
+                        self.businesses = self.businesses.map({ business in
+                            let model = models.first(where: { $0.businessId == business.id })
+                            business.isLiked = model?.isLiked
+                            return business
+                        })
                     } else {
                         self.insertBusinessesLike(business)
                     }
                 }
-//                self.businesses = self.businesses.map({ business in
-//                    let model = models.first(where: { $0.businessId == business.id })
-//                    business.isLiked = model?.isLiked
-//                    return business
-//                })
             }).store(in: &cancellables)
     }
     

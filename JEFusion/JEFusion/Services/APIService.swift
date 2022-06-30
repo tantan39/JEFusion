@@ -15,7 +15,10 @@ struct Endpoint {
     static let fetchBusinesses: (_ location: String, _ limit: Int) -> String = { location, limit in
         return "\(ROOT)/search?location=\(location)&limit=\(limit)"
     }
-
+    
+    static let fetchReviews: (_ id: String) -> String = { id in
+        return "\(ROOT)/\(id)/reviews"
+    }
 }
 
 enum Error: Swift.Error {
@@ -35,7 +38,8 @@ class APIService: BusinessLoader {
     }
     
     private struct RootItem: Decodable {
-        let businesses: [BusinessModel]
+        let businesses: [BusinessModel]?
+        let reviews: [Review]?
     }
     
     func fetchBusinesses(by location: String) -> AnyPublisher<[BusinessModel], Error> {
@@ -48,7 +52,7 @@ class APIService: BusinessLoader {
                     switch response {
                     case let .success(data):
                         if let root = try? JSONDecoder().decode(RootItem.self, from: data) {
-                            promise(.success(root.businesses))
+                            promise(.success(root.businesses ?? []))
                         } else {
                             promise(.failure(.invalidData))
                         }
@@ -60,5 +64,28 @@ class APIService: BusinessLoader {
         }
         .eraseToAnyPublisher()
         
+    }
+    
+    func fetchBusinessReviews(with id: String) -> AnyPublisher<[Review], Error> {
+        let url = URL(string: Endpoint.fetchReviews(id))!
+        
+        return Deferred {
+            Future() { promise in
+                self.httpClient.get(url: url) { response in
+                    switch response {
+                    case let .success(data):
+                        if let root = try? JSONDecoder().decode(RootItem.self, from: data) {
+                            promise(.success(root.reviews ?? []))
+                        } else {
+                            promise(.failure(.invalidData))
+                        }
+                    case .failure:
+                        promise(.failure(.invalidData))
+                    }
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+
     }
 }

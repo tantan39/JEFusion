@@ -42,8 +42,8 @@ extension CoreDataBusinessStore: BusinessStore {
             Future { promise in
                 context.perform {
                     let likeModel = ManagedLike(context: context)
-                    likeModel.id = likeModel.id
-                    likeModel.isLiked = likeModel.isLiked
+                    likeModel.id = model.businessId
+                    likeModel.isLiked = model.isLiked
                     try? context.save()
                     promise(.success(true))
                 }

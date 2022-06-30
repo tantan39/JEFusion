@@ -30,6 +30,8 @@
 		B4E8E621286DD43300A6B33F /* ManagedLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E61F286DD43300A6B33F /* ManagedLike.swift */; };
 		B4E8E624286DD50800A6B33F /* CoreDataBusinessStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E623286DD50800A6B33F /* CoreDataBusinessStore.swift */; };
 		B4E8E626286DF84100A6B33F /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E625286DF84100A6B33F /* DetailsViewModel.swift */; };
+		B4E8E628286DF9DF00A6B33F /* LikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E627286DF9DF00A6B33F /* LikeModel.swift */; };
+		B4E8E62A286DF9F600A6B33F /* BusinessStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E629286DF9F600A6B33F /* BusinessStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		B4E8E61F286DD43300A6B33F /* ManagedLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedLike.swift; sourceTree = "<group>"; };
 		B4E8E623286DD50800A6B33F /* CoreDataBusinessStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBusinessStore.swift; sourceTree = "<group>"; };
 		B4E8E625286DF84100A6B33F /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		B4E8E627286DF9DF00A6B33F /* LikeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeModel.swift; sourceTree = "<group>"; };
+		B4E8E629286DF9F600A6B33F /* BusinessStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +114,8 @@
 				B4E8E610286D2CA400A6B33F /* BusinessModel.swift */,
 				B4E8E617286DD1DE00A6B33F /* Review.swift */,
 				B4E8E608286CFB8C00A6B33F /* BusinessLoader.swift */,
+				B4E8E629286DF9F600A6B33F /* BusinessStore.swift */,
+				B4E8E627286DF9DF00A6B33F /* LikeModel.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -248,12 +254,14 @@
 				B4E8E607286CF12900A6B33F /* BusinessViewController.swift in Sources */,
 				B4E8E613286D2E8E00A6B33F /* BusinessViewModel.swift in Sources */,
 				B4E8E60D286D008200A6B33F /* URLSessionHTTPClient.swift in Sources */,
+				B4E8E62A286DF9F600A6B33F /* BusinessStore.swift in Sources */,
 				B4E8E5E9286CDB8100A6B33F /* HomeViewController.swift in Sources */,
 				B4E8E609286CFB8C00A6B33F /* BusinessLoader.swift in Sources */,
 				B4E8E618286DD1DE00A6B33F /* Review.swift in Sources */,
 				B4E8E5E5286CDB8100A6B33F /* AppDelegate.swift in Sources */,
 				B4E8E604286CE9F800A6B33F /* CityCell.swift in Sources */,
 				B4E8E5FA286CE3F400A6B33F /* City.swift in Sources */,
+				B4E8E628286DF9DF00A6B33F /* LikeModel.swift in Sources */,
 				B4E8E60F286D1EE500A6B33F /* BusinessItemCell.swift in Sources */,
 				B4E8E5FE286CE65500A6B33F /* HomeViewModel.swift in Sources */,
 				B4E8E60B286CFD8F00A6B33F /* APIService.swift in Sources */,

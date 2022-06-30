@@ -12,14 +12,3 @@ protocol BusinessLoader {
     func fetchBusinesses(by location: String) -> AnyPublisher<[BusinessModel], Error>
     func fetchBusinessReviews(with id: String) -> AnyPublisher<[Review], Error>
 }
-
-protocol BusinessStore {
-    func insertLikeModel(_ model: LikeModel) -> AnyPublisher<Bool, Error>
-    func retrieveBusinessLike() -> AnyPublisher<[LikeModel], Error>
-    func updateLikeModel(_ id: String, isLiked: Bool) -> AnyPublisher<Bool, Error>
-}
-
-struct LikeModel {
-    let businessId: String
-    let isLiked: Bool
-}

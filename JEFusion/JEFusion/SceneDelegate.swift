@@ -11,6 +11,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var navigationController: UINavigationController?
+    
+    var apiService: APIService {
+        APIService(httpClient: URLSessionHTTPClient())
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -33,7 +37,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func showBusiness(in city: String) {
-        let apiService = APIService(httpClient: URLSessionHTTPClient())
         let viewModel = BusinessViewModel(apiService: apiService, location: city)
         
         let businessVC = BusinessViewController(viewModel: viewModel)
@@ -45,7 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func showDetails(_ business: BusinessModel) {
-        let viewModel = DetailsViewModel(business: business)
+        let viewModel = DetailsViewModel(loader: apiService, business: business)
         let detailsVC = DetailsViewController(viewModel)
         self.navigationController?.pushViewController(detailsVC, animated: true)
     }

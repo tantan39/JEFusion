@@ -7,13 +7,27 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class DetailsViewModel {
+    private var loader: BusinessLoader
     var business: BusinessModel
+    @Published var reviews: [Review] = []
+    private var cancellables = Set<AnyCancellable>()
     
-    init(business: BusinessModel) {
+    init(loader: BusinessLoader, business: BusinessModel) {
+        self.loader = loader
         self.business = business
     }
+    
+    func fetchReviews() {
+        loader.fetchBusinessReviews(with: business.id)
+            .receive(on: DispatchQueue.main, options: .none)
+            .sink(receiveCompletion: { _ in }) { [weak self] reviews in
+                self?.reviews = Array(reviews.prefix(3))
+            }.store(in: &cancellables)
+    }
+    
 }
 
 class DetailsViewController: UIViewController {
@@ -54,14 +68,16 @@ class DetailsViewController: UIViewController {
         return label
     }()
     
-    lazy var detailsLabel: UILabel = {
+    lazy var reviewLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 18, weight: .medium)
         return label
     }()
     
     private var viewModel: DetailsViewModel?
+    private var cancellables = Set<AnyCancellable>()
     
     convenience init(_ viewModel: DetailsViewModel) {
         self.init()
@@ -71,6 +87,8 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         view.backgroundColor = .white
         setupUI()
+        
+        self.viewModel?.fetchReviews()
         setValue()
     }
     
@@ -80,6 +98,7 @@ class DetailsViewController: UIViewController {
         setupBackdrop()
         setupTitle()
         setupOverviewLabel()
+        setupReviewsLabel()
     }
     
     private func setupScrollView() {
@@ -120,12 +139,21 @@ class DetailsViewController: UIViewController {
         overviewLabel.snp.makeConstraints { make in
             make.leading.trailing.equalTo(titleLabel)
             make.top.equalTo(titleLabel.snp.bottom).offset(20)
+        }
+    }
+    
+    private func setupReviewsLabel() {
+        containerView.addSubview(reviewLabel)
+        reviewLabel.snp.makeConstraints { make in
+            make.leading.trailing.equalTo(titleLabel)
+            make.top.equalTo(overviewLabel.snp.bottom).offset(20)
             make.bottom.equalToSuperview().offset(-60)
         }
     }
     
     private func setValue() {
         guard let vm = viewModel else { return }
+        
         DispatchQueue.global().async {
             let url = URL(string: vm.business.imageURL)!
             if let data = try? Data(contentsOf: url) {
@@ -136,5 +164,11 @@ class DetailsViewController: UIViewController {
         }
         titleLabel.text = vm.business.name
         overviewLabel.text = "Rating: \(vm.business.rating) \n\nAddress: \(vm.business.displayAddress.joined(separator: ",")) \n\nCategories: \n\(vm.business.categories.joined(separator: "-"))"
+        
+        vm.$reviews.sink { [weak self] reviews in
+            
+            let text = reviews.map { "(\($0.user.name))" + ": " + $0.text }
+            self?.reviewLabel.text = "Reviews: \n" + text.joined(separator: "\n\n")
+        }.store(in: &cancellables)
     }
 }

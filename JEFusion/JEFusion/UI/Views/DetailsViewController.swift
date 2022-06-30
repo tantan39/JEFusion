@@ -85,6 +85,7 @@ class DetailsViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        self.navigationItem.title = "Details"
         view.backgroundColor = .white
         setupUI()
         

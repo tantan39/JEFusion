@@ -19,6 +19,7 @@ class BusinessViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
+        self.navigationItem.title = "Restaurants"
         view.backgroundColor = .white
         tableView.register(BusinessItemCell.self, forCellReuseIdentifier: "BusinessItemCell")
         

@@ -20,6 +20,7 @@ class HomeViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.navigationItem.title = "Cities"
         view.backgroundColor = .white
         tableView.register(CityCell.self, forCellReuseIdentifier: "CityCell")
 

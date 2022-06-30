@@ -41,7 +41,7 @@ class BusinessViewController: UITableViewController {
     
     override func viewDidLoad() {
         view.backgroundColor = .white
-        tableView.register(CityCell.self, forCellReuseIdentifier: "CityCell")
+        tableView.register(BusinessItemCell.self, forCellReuseIdentifier: "BusinessItemCell")
         
         binding()
         loadBusinesses()
@@ -49,7 +49,7 @@ class BusinessViewController: UITableViewController {
     
     private func binding() {
         self.viewModel?.$businesses.sink(receiveValue: { [weak self] items in
-            let controllers = items.map { CityCellController(title: $0.name) }
+            let controllers = items.map { BusinessItemCellController(title: $0.name, isLiked: false) }
             self?.set(controllers)
         }).store(in: &cancellables)
     }
@@ -58,8 +58,8 @@ class BusinessViewController: UITableViewController {
         viewModel?.loadBusinesses()
     }
     
-    private func set(_ items: [CityCellController]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int,CityCellController>()
+    private func set(_ items: [BusinessItemCellController]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int,BusinessItemCellController>()
         snapshot.appendSections([0])
         snapshot.appendItems(items, toSection: 0)
         self.datasource.apply(snapshot, animatingDifferences: false)
@@ -67,10 +67,14 @@ class BusinessViewController: UITableViewController {
     
     // MARK: - TableView Datasource/Delegate
     
-    lazy var datasource = UITableViewDiffableDataSource<Int, CityCellController>(tableView: tableView) { [weak self] tableView, indexPath, controller in
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CityCell") as? CityCell else { return UITableViewCell() }
+    lazy var datasource = UITableViewDiffableDataSource<Int, BusinessItemCellController>(tableView: tableView) { [weak self] tableView, indexPath, controller in
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "BusinessItemCell") as? BusinessItemCell else { return UITableViewCell() }
         cell.setValue(controller)
         cell.separatorInset = UIEdgeInsets(top: 0, left: -1000, bottom: 0, right: 0)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        60
     }
 }

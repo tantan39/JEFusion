@@ -11,6 +11,7 @@ class BusinessModel: Decodable {
     let id: String
     let name: String
     let rating: Double
+    let imageURL: String
     let displayAddress: [String]
     let categories: [String]
     let isLiked: Bool?
@@ -19,6 +20,7 @@ class BusinessModel: Decodable {
         let remoteItem = try RemoteItem(from: decoder)
         self.id = remoteItem.id
         self.name = remoteItem.name
+        self.imageURL = remoteItem.image_url
         self.rating = remoteItem.rating ?? 0.0
         self.displayAddress = remoteItem.location.display_address
         self.categories = remoteItem.categories.map { $0.title }
@@ -29,6 +31,7 @@ class BusinessModel: Decodable {
 fileprivate struct RemoteItem: Decodable {
     let id: String
     let name: String
+    let image_url: String
     let rating: Double?
     let categories: [Category]
     let location: Location

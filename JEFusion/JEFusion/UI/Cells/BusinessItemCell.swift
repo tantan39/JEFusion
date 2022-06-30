@@ -53,6 +53,6 @@ class BusinessItemCell: UITableViewCell {
     
     func setValue(_ controller: BusinessItemCellController) {
         titleLabel.text = controller.title
-        likeIcon.image = controller.isLiked ? UIImage(systemName: "hand.thumbsup.fill") : UIImage(systemName: "hand.thumbsup")
+        likeIcon.image = controller.isLiked ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
     }
 }

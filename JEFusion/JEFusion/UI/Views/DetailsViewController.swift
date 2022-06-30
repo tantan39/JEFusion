@@ -52,6 +52,14 @@ class DetailsViewController: UIViewController {
         return imgv
     }()
     
+    lazy var favoriteButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(favoriteButtonTapped), for: .touchUpInside)
+        button.setBackgroundImage(UIImage(systemName: "star"), for: .normal)
+        return button
+    }()
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -124,6 +132,13 @@ class DetailsViewController: UIViewController {
             make.leading.trailing.top.equalToSuperview()
             make.height.equalTo(view.snp.height).multipliedBy(0.5)
         }
+        
+        containerView.addSubview(favoriteButton)
+        favoriteButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().offset(-16)
+            make.top.equalToSuperview().offset(16)
+            make.width.height.equalTo(40)
+        }
     }
     
     private func setupTitle() {
@@ -150,6 +165,12 @@ class DetailsViewController: UIViewController {
             make.top.equalTo(overviewLabel.snp.bottom).offset(20)
             make.bottom.equalToSuperview().offset(-60)
         }
+    }
+    
+    @objc func favoriteButtonTapped() {
+        favoriteButton.setBackgroundImage(UIImage(systemName: "star.fill"), for: .normal)
+//        let item = FavoriteItem(id: movieID, status: true)
+//        self.favoriteButtonOnClick?(item)
     }
     
     private func setValue() {

@@ -25,6 +25,7 @@
 		B4E8E611286D2CA400A6B33F /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E610286D2CA400A6B33F /* BusinessModel.swift */; };
 		B4E8E613286D2E8E00A6B33F /* BusinessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E612286D2E8E00A6B33F /* BusinessViewModel.swift */; };
 		B4E8E615286D2ED400A6B33F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E614286D2ED400A6B33F /* DetailsViewController.swift */; };
+		B4E8E618286DD1DE00A6B33F /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E617286DD1DE00A6B33F /* Review.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		B4E8E610286D2CA400A6B33F /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
 		B4E8E612286D2E8E00A6B33F /* BusinessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewModel.swift; sourceTree = "<group>"; };
 		B4E8E614286D2ED400A6B33F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		B4E8E617286DD1DE00A6B33F /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			children = (
 				B4E8E5F9286CE3F400A6B33F /* City.swift */,
 				B4E8E610286D2CA400A6B33F /* BusinessModel.swift */,
+				B4E8E617286DD1DE00A6B33F /* Review.swift */,
 				B4E8E608286CFB8C00A6B33F /* BusinessLoader.swift */,
 			);
 			path = Domain;
@@ -224,6 +227,7 @@
 				B4E8E60D286D008200A6B33F /* URLSessionHTTPClient.swift in Sources */,
 				B4E8E5E9286CDB8100A6B33F /* HomeViewController.swift in Sources */,
 				B4E8E609286CFB8C00A6B33F /* BusinessLoader.swift in Sources */,
+				B4E8E618286DD1DE00A6B33F /* Review.swift in Sources */,
 				B4E8E5E5286CDB8100A6B33F /* AppDelegate.swift in Sources */,
 				B4E8E604286CE9F800A6B33F /* CityCell.swift in Sources */,
 				B4E8E5FA286CE3F400A6B33F /* City.swift in Sources */,

@@ -29,6 +29,7 @@
 		B4E8E61C286DD37600A6B33F /* JEFusion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E61A286DD37600A6B33F /* JEFusion.xcdatamodeld */; };
 		B4E8E621286DD43300A6B33F /* ManagedLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E61F286DD43300A6B33F /* ManagedLike.swift */; };
 		B4E8E624286DD50800A6B33F /* CoreDataBusinessStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E623286DD50800A6B33F /* CoreDataBusinessStore.swift */; };
+		B4E8E626286DF84100A6B33F /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E625286DF84100A6B33F /* DetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		B4E8E61B286DD37600A6B33F /* JEFusion.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JEFusion.xcdatamodel; sourceTree = "<group>"; };
 		B4E8E61F286DD43300A6B33F /* ManagedLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedLike.swift; sourceTree = "<group>"; };
 		B4E8E623286DD50800A6B33F /* CoreDataBusinessStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBusinessStore.swift; sourceTree = "<group>"; };
+		B4E8E625286DF84100A6B33F /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				B4E8E606286CF12900A6B33F /* BusinessViewController.swift */,
 				B4E8E612286D2E8E00A6B33F /* BusinessViewModel.swift */,
 				B4E8E614286D2ED400A6B33F /* DetailsViewController.swift */,
+				B4E8E625286DF84100A6B33F /* DetailsViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4E8E624286DD50800A6B33F /* CoreDataBusinessStore.swift in Sources */,
+				B4E8E626286DF84100A6B33F /* DetailsViewModel.swift in Sources */,
 				B4E8E61C286DD37600A6B33F /* JEFusion.xcdatamodeld in Sources */,
 				B4E8E607286CF12900A6B33F /* BusinessViewController.swift in Sources */,
 				B4E8E613286D2E8E00A6B33F /* BusinessViewModel.swift in Sources */,

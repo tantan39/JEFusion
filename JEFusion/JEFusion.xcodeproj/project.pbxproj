@@ -26,6 +26,9 @@
 		B4E8E613286D2E8E00A6B33F /* BusinessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E612286D2E8E00A6B33F /* BusinessViewModel.swift */; };
 		B4E8E615286D2ED400A6B33F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E614286D2ED400A6B33F /* DetailsViewController.swift */; };
 		B4E8E618286DD1DE00A6B33F /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E617286DD1DE00A6B33F /* Review.swift */; };
+		B4E8E61C286DD37600A6B33F /* JEFusion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E61A286DD37600A6B33F /* JEFusion.xcdatamodeld */; };
+		B4E8E621286DD43300A6B33F /* ManagedLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E61F286DD43300A6B33F /* ManagedLike.swift */; };
+		B4E8E624286DD50800A6B33F /* CoreDataBusinessStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E623286DD50800A6B33F /* CoreDataBusinessStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +52,9 @@
 		B4E8E612286D2E8E00A6B33F /* BusinessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewModel.swift; sourceTree = "<group>"; };
 		B4E8E614286D2ED400A6B33F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		B4E8E617286DD1DE00A6B33F /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		B4E8E61B286DD37600A6B33F /* JEFusion.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JEFusion.xcdatamodel; sourceTree = "<group>"; };
+		B4E8E61F286DD43300A6B33F /* ManagedLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedLike.swift; sourceTree = "<group>"; };
+		B4E8E623286DD50800A6B33F /* CoreDataBusinessStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBusinessStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +124,7 @@
 		B4E8E5FC286CE5C100A6B33F /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B4E8E619286DD2AE00A6B33F /* CoreData */,
 				B4E8E60A286CFD8F00A6B33F /* APIService.swift */,
 				B4E8E60C286D008200A6B33F /* URLSessionHTTPClient.swift */,
 			);
@@ -143,6 +150,16 @@
 				B4E8E614286D2ED400A6B33F /* DetailsViewController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B4E8E619286DD2AE00A6B33F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				B4E8E61A286DD37600A6B33F /* JEFusion.xcdatamodeld */,
+				B4E8E61F286DD43300A6B33F /* ManagedLike.swift */,
+				B4E8E623286DD50800A6B33F /* CoreDataBusinessStore.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,6 +239,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4E8E624286DD50800A6B33F /* CoreDataBusinessStore.swift in Sources */,
+				B4E8E61C286DD37600A6B33F /* JEFusion.xcdatamodeld in Sources */,
 				B4E8E607286CF12900A6B33F /* BusinessViewController.swift in Sources */,
 				B4E8E613286D2E8E00A6B33F /* BusinessViewModel.swift in Sources */,
 				B4E8E60D286D008200A6B33F /* URLSessionHTTPClient.swift in Sources */,
@@ -237,6 +256,7 @@
 				B4E8E615286D2ED400A6B33F /* DetailsViewController.swift in Sources */,
 				B4E8E5E7286CDB8100A6B33F /* SceneDelegate.swift in Sources */,
 				B4E8E611286D2CA400A6B33F /* BusinessModel.swift in Sources */,
+				B4E8E621286DD43300A6B33F /* ManagedLike.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +495,19 @@
 			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		B4E8E61A286DD37600A6B33F /* JEFusion.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B4E8E61B286DD37600A6B33F /* JEFusion.xcdatamodel */,
+			);
+			currentVersion = B4E8E61B286DD37600A6B33F /* JEFusion.xcdatamodel */;
+			path = JEFusion.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B4E8E5D9286CDB8100A6B33F /* Project object */;
 }

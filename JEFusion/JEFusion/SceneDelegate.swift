@@ -45,7 +45,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func showDetails(_ business: BusinessModel) {
-        let detailsVC = UIViewController()
+        let viewModel = DetailsViewModel(business: business)
+        let detailsVC = DetailsViewController(viewModel)
         self.navigationController?.pushViewController(detailsVC, animated: true)
     }
 

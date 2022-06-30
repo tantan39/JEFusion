@@ -24,6 +24,7 @@
 		B4E8E60F286D1EE500A6B33F /* BusinessItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E60E286D1EE500A6B33F /* BusinessItemCell.swift */; };
 		B4E8E611286D2CA400A6B33F /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E610286D2CA400A6B33F /* BusinessModel.swift */; };
 		B4E8E613286D2E8E00A6B33F /* BusinessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E612286D2E8E00A6B33F /* BusinessViewModel.swift */; };
+		B4E8E615286D2ED400A6B33F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E614286D2ED400A6B33F /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		B4E8E60E286D1EE500A6B33F /* BusinessItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessItemCell.swift; sourceTree = "<group>"; };
 		B4E8E610286D2CA400A6B33F /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
 		B4E8E612286D2E8E00A6B33F /* BusinessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewModel.swift; sourceTree = "<group>"; };
+		B4E8E614286D2ED400A6B33F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 				B4E8E5E8286CDB8100A6B33F /* HomeViewController.swift */,
 				B4E8E606286CF12900A6B33F /* BusinessViewController.swift */,
 				B4E8E612286D2E8E00A6B33F /* BusinessViewModel.swift */,
+				B4E8E614286D2ED400A6B33F /* DetailsViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 				B4E8E60F286D1EE500A6B33F /* BusinessItemCell.swift in Sources */,
 				B4E8E5FE286CE65500A6B33F /* HomeViewModel.swift in Sources */,
 				B4E8E60B286CFD8F00A6B33F /* APIService.swift in Sources */,
+				B4E8E615286D2ED400A6B33F /* DetailsViewController.swift in Sources */,
 				B4E8E5E7286CDB8100A6B33F /* SceneDelegate.swift in Sources */,
 				B4E8E611286D2CA400A6B33F /* BusinessModel.swift in Sources */,
 			);

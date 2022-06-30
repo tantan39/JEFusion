@@ -37,7 +37,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewModel = BusinessViewModel(apiService: apiService, location: city)
         
         let businessVC = BusinessViewController(viewModel: viewModel)
+        businessVC.onSelected = { [weak self] index in
+            let business = viewModel.businesses[index]
+            self?.showDetails(business)
+        }
         self.navigationController?.pushViewController(businessVC, animated: true)
+    }
+    
+    private func showDetails(_ business: BusinessModel) {
+        let detailsVC = UIViewController()
+        self.navigationController?.pushViewController(detailsVC, animated: true)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

@@ -34,6 +34,8 @@ class BusinessViewModel {
 class BusinessViewController: UITableViewController {
     private var viewModel: BusinessViewModel?
     private var cancellables = Set<AnyCancellable>()
+    var onSelected: ((Int) -> Void)?
+    
     convenience init(viewModel: BusinessViewModel) {
         self.init()
         self.viewModel = viewModel
@@ -76,5 +78,9 @@ class BusinessViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         60
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        onSelected?(indexPath.row)
     }
 }

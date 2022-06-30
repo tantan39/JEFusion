@@ -168,9 +168,9 @@ class DetailsViewController: UIViewController {
     }
     
     @objc func favoriteButtonTapped() {
-        favoriteButton.setBackgroundImage(UIImage(systemName: "star.fill"), for: .normal)
-//        let item = FavoriteItem(id: movieID, status: true)
-//        self.favoriteButtonOnClick?(item)
+        guard let vm = viewModel else { return }
+        vm.business.isLiked?.toggle()
+        updateLikeIcon(vm.business.isLiked ?? false)
     }
     
     private func setValue() {
@@ -192,5 +192,15 @@ class DetailsViewController: UIViewController {
             let text = reviews.map { "(\($0.user.name))" + ": " + $0.text }
             self?.reviewLabel.text = "Reviews: \n" + text.joined(separator: "\n\n")
         }.store(in: &cancellables)
+        
+        if let isLiked = vm.business.isLiked {
+            updateLikeIcon(isLiked)
+        }
+    }
+    
+    private func updateLikeIcon(_ like: Bool) {
+        let icon = like ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+        favoriteButton.setBackgroundImage(icon, for: .normal)
+
     }
 }

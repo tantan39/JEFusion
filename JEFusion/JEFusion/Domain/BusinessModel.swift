@@ -14,7 +14,7 @@ class BusinessModel: Decodable {
     let imageURL: String
     let displayAddress: [String]
     let categories: [String]
-    let isLiked: Bool?
+    var isLiked: Bool?
     
     required init(from decoder: Decoder) throws {
         let remoteItem = try RemoteItem(from: decoder)

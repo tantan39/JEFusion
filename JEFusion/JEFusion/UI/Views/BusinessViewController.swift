@@ -29,9 +29,10 @@ class BusinessViewController: UITableViewController {
     
     private func binding() {
         self.viewModel?.$businesses.sink(receiveValue: { [weak self] items in
-            let controllers = items.map { BusinessItemCellController(title: $0.name, isLiked: false) }
+            let controllers = items.map { BusinessItemCellController(title: $0.name, isLiked: $0.isLiked ?? false) }
             self?.set(controllers)
         }).store(in: &cancellables)
+        
     }
     
     private func loadBusinesses() {

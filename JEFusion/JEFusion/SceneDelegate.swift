@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import CoreData
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -14,6 +14,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var apiService: APIService {
         APIService(httpClient: URLSessionHTTPClient())
+    }
+    
+    var coreDataService: CoreDataBusinessStore {
+        try! CoreDataBusinessStore(storeURL: NSPersistentContainer.defaultDirectoryURL().appendingPathComponent("jefusion-store-sqlite"))
     }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -37,7 +41,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     private func showBusiness(in city: String) {
-        let viewModel = BusinessViewModel(apiService: apiService, location: city)
+        let viewModel = BusinessViewModel(apiService: apiService, store: coreDataService, location: city)
         
         let businessVC = BusinessViewController(viewModel: viewModel)
         businessVC.onSelected = { [weak self] index in

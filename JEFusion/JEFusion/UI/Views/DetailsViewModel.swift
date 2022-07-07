@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import JECore
 
 class DetailsViewModel {
     private var loader: BusinessLoader

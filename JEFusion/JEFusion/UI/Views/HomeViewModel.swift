@@ -5,6 +5,7 @@
 //  Created by Tan Tan on 6/29/22.
 //
 
+import JECore
 import Foundation
 
 class HomeViewModel: ObservableObject {

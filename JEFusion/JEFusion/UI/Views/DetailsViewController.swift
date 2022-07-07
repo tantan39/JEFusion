@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Combine
+import JECore
 
 class DetailsViewController: UIViewController {
     lazy var scrollView: UIScrollView = {

@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import JECore
 
 class BusinessViewController: UITableViewController {
     private var viewModel: BusinessViewModel?

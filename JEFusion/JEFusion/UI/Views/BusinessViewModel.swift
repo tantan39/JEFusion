@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import JECore
 
 class BusinessViewModel: ObservableObject {
     private let loader: BusinessLoader?

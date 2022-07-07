@@ -7,34 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B401465828771E1E006D6ACB /* JECore in Frameworks */ = {isa = PBXBuildFile; productRef = B401465728771E1E006D6ACB /* JECore */; };
 		B4E8E5E5286CDB8100A6B33F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E5E4286CDB8100A6B33F /* AppDelegate.swift */; };
 		B4E8E5E7286CDB8100A6B33F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E5E6286CDB8100A6B33F /* SceneDelegate.swift */; };
 		B4E8E5E9286CDB8100A6B33F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E5E8286CDB8100A6B33F /* HomeViewController.swift */; };
 		B4E8E5EC286CDB8100A6B33F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4E8E5EA286CDB8100A6B33F /* Main.storyboard */; };
 		B4E8E5EE286CDB8400A6B33F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4E8E5ED286CDB8400A6B33F /* Assets.xcassets */; };
 		B4E8E5F1286CDB8400A6B33F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4E8E5EF286CDB8400A6B33F /* LaunchScreen.storyboard */; };
-		B4E8E5FA286CE3F400A6B33F /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E5F9286CE3F400A6B33F /* City.swift */; };
 		B4E8E5FE286CE65500A6B33F /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E5FD286CE65500A6B33F /* HomeViewModel.swift */; };
 		B4E8E601286CE78E00A6B33F /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = B4E8E600286CE78E00A6B33F /* SnapKit */; };
 		B4E8E604286CE9F800A6B33F /* CityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E603286CE9F800A6B33F /* CityCell.swift */; };
 		B4E8E607286CF12900A6B33F /* BusinessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E606286CF12900A6B33F /* BusinessViewController.swift */; };
-		B4E8E609286CFB8C00A6B33F /* BusinessLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E608286CFB8C00A6B33F /* BusinessLoader.swift */; };
 		B4E8E60B286CFD8F00A6B33F /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E60A286CFD8F00A6B33F /* APIService.swift */; };
 		B4E8E60D286D008200A6B33F /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E60C286D008200A6B33F /* URLSessionHTTPClient.swift */; };
 		B4E8E60F286D1EE500A6B33F /* BusinessItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E60E286D1EE500A6B33F /* BusinessItemCell.swift */; };
-		B4E8E611286D2CA400A6B33F /* BusinessModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E610286D2CA400A6B33F /* BusinessModel.swift */; };
 		B4E8E613286D2E8E00A6B33F /* BusinessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E612286D2E8E00A6B33F /* BusinessViewModel.swift */; };
 		B4E8E615286D2ED400A6B33F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E614286D2ED400A6B33F /* DetailsViewController.swift */; };
-		B4E8E618286DD1DE00A6B33F /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E617286DD1DE00A6B33F /* Review.swift */; };
 		B4E8E61C286DD37600A6B33F /* JEFusion.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E61A286DD37600A6B33F /* JEFusion.xcdatamodeld */; };
 		B4E8E621286DD43300A6B33F /* ManagedLike.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E61F286DD43300A6B33F /* ManagedLike.swift */; };
 		B4E8E624286DD50800A6B33F /* CoreDataBusinessStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E623286DD50800A6B33F /* CoreDataBusinessStore.swift */; };
 		B4E8E626286DF84100A6B33F /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E625286DF84100A6B33F /* DetailsViewModel.swift */; };
-		B4E8E628286DF9DF00A6B33F /* LikeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E627286DF9DF00A6B33F /* LikeModel.swift */; };
-		B4E8E62A286DF9F600A6B33F /* BusinessStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E629286DF9F600A6B33F /* BusinessStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B401465528771C42006D6ACB /* JECore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = JECore; sourceTree = "<group>"; };
 		B4E8E5E1286CDB8100A6B33F /* JEFusion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JEFusion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4E8E5E4286CDB8100A6B33F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4E8E5E6286CDB8100A6B33F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,24 +39,18 @@
 		B4E8E5ED286CDB8400A6B33F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4E8E5F0286CDB8400A6B33F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B4E8E5F2286CDB8400A6B33F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B4E8E5F9286CE3F400A6B33F /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		B4E8E5FD286CE65500A6B33F /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B4E8E603286CE9F800A6B33F /* CityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCell.swift; sourceTree = "<group>"; };
 		B4E8E606286CF12900A6B33F /* BusinessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewController.swift; sourceTree = "<group>"; };
-		B4E8E608286CFB8C00A6B33F /* BusinessLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessLoader.swift; sourceTree = "<group>"; };
 		B4E8E60A286CFD8F00A6B33F /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		B4E8E60C286D008200A6B33F /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		B4E8E60E286D1EE500A6B33F /* BusinessItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessItemCell.swift; sourceTree = "<group>"; };
-		B4E8E610286D2CA400A6B33F /* BusinessModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessModel.swift; sourceTree = "<group>"; };
 		B4E8E612286D2E8E00A6B33F /* BusinessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessViewModel.swift; sourceTree = "<group>"; };
 		B4E8E614286D2ED400A6B33F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
-		B4E8E617286DD1DE00A6B33F /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		B4E8E61B286DD37600A6B33F /* JEFusion.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JEFusion.xcdatamodel; sourceTree = "<group>"; };
 		B4E8E61F286DD43300A6B33F /* ManagedLike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedLike.swift; sourceTree = "<group>"; };
 		B4E8E623286DD50800A6B33F /* CoreDataBusinessStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBusinessStore.swift; sourceTree = "<group>"; };
 		B4E8E625286DF84100A6B33F /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
-		B4E8E627286DF9DF00A6B33F /* LikeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeModel.swift; sourceTree = "<group>"; };
-		B4E8E629286DF9F600A6B33F /* BusinessStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B401465828771E1E006D6ACB /* JECore in Frameworks */,
 				B4E8E601286CE78E00A6B33F /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,11 +66,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B401465628771E1E006D6ACB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B4E8E5D8286CDB8100A6B33F = {
 			isa = PBXGroup;
 			children = (
+				B401465528771C42006D6ACB /* JECore */,
 				B4E8E5E3286CDB8100A6B33F /* JEFusion */,
 				B4E8E5E2286CDB8100A6B33F /* Products */,
+				B401465628771E1E006D6ACB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,7 +97,6 @@
 				B4E8E5E4286CDB8100A6B33F /* AppDelegate.swift */,
 				B4E8E5E6286CDB8100A6B33F /* SceneDelegate.swift */,
 				B4E8E5FC286CE5C100A6B33F /* Services */,
-				B4E8E5F8286CE3E200A6B33F /* Domain */,
 				B4E8E5FB286CE5AE00A6B33F /* UI */,
 				B4E8E5EA286CDB8100A6B33F /* Main.storyboard */,
 				B4E8E5ED286CDB8400A6B33F /* Assets.xcassets */,
@@ -105,19 +104,6 @@
 				B4E8E5F2286CDB8400A6B33F /* Info.plist */,
 			);
 			path = JEFusion;
-			sourceTree = "<group>";
-		};
-		B4E8E5F8286CE3E200A6B33F /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				B4E8E5F9286CE3F400A6B33F /* City.swift */,
-				B4E8E610286D2CA400A6B33F /* BusinessModel.swift */,
-				B4E8E617286DD1DE00A6B33F /* Review.swift */,
-				B4E8E608286CFB8C00A6B33F /* BusinessLoader.swift */,
-				B4E8E629286DF9F600A6B33F /* BusinessStore.swift */,
-				B4E8E627286DF9DF00A6B33F /* LikeModel.swift */,
-			);
-			path = Domain;
 			sourceTree = "<group>";
 		};
 		B4E8E5FB286CE5AE00A6B33F /* UI */ = {
@@ -189,6 +175,7 @@
 			name = JEFusion;
 			packageProductDependencies = (
 				B4E8E600286CE78E00A6B33F /* SnapKit */,
+				B401465728771E1E006D6ACB /* JECore */,
 			);
 			productName = JEFusion;
 			productReference = B4E8E5E1286CDB8100A6B33F /* JEFusion.app */;
@@ -254,20 +241,14 @@
 				B4E8E607286CF12900A6B33F /* BusinessViewController.swift in Sources */,
 				B4E8E613286D2E8E00A6B33F /* BusinessViewModel.swift in Sources */,
 				B4E8E60D286D008200A6B33F /* URLSessionHTTPClient.swift in Sources */,
-				B4E8E62A286DF9F600A6B33F /* BusinessStore.swift in Sources */,
 				B4E8E5E9286CDB8100A6B33F /* HomeViewController.swift in Sources */,
-				B4E8E609286CFB8C00A6B33F /* BusinessLoader.swift in Sources */,
-				B4E8E618286DD1DE00A6B33F /* Review.swift in Sources */,
 				B4E8E5E5286CDB8100A6B33F /* AppDelegate.swift in Sources */,
 				B4E8E604286CE9F800A6B33F /* CityCell.swift in Sources */,
-				B4E8E5FA286CE3F400A6B33F /* City.swift in Sources */,
-				B4E8E628286DF9DF00A6B33F /* LikeModel.swift in Sources */,
 				B4E8E60F286D1EE500A6B33F /* BusinessItemCell.swift in Sources */,
 				B4E8E5FE286CE65500A6B33F /* HomeViewModel.swift in Sources */,
 				B4E8E60B286CFD8F00A6B33F /* APIService.swift in Sources */,
 				B4E8E615286D2ED400A6B33F /* DetailsViewController.swift in Sources */,
 				B4E8E5E7286CDB8100A6B33F /* SceneDelegate.swift in Sources */,
-				B4E8E611286D2CA400A6B33F /* BusinessModel.swift in Sources */,
 				B4E8E621286DD43300A6B33F /* ManagedLike.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,6 +482,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		B401465728771E1E006D6ACB /* JECore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JECore;
+		};
 		B4E8E600286CE78E00A6B33F /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B4E8E5FF286CE78E00A6B33F /* XCRemoteSwiftPackageReference "SnapKit" */;

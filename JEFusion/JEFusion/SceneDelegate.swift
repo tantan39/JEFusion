@@ -7,6 +7,8 @@
 
 import UIKit
 import CoreData
+import JECore
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?

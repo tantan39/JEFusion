@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import JECore
 
 class URLSessionHTTPClient: HTTPClient {
     private let session: URLSession = .shared

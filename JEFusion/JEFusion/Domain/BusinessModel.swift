@@ -7,16 +7,16 @@
 
 import Foundation
 
-class BusinessModel: Decodable {
-    let id: String
-    let name: String
-    let rating: Double
-    let imageURL: String
-    let displayAddress: [String]
-    let categories: [String]
-    var isLiked: Bool?
+public class BusinessModel: Decodable {
+    public let id: String
+    public let name: String
+    public let rating: Double
+    public let imageURL: String
+    public let displayAddress: [String]
+    public let categories: [String]
+    public var isLiked: Bool?
     
-    required init(from decoder: Decoder) throws {
+    public required init(from decoder: Decoder) throws {
         let remoteItem = try RemoteItem(from: decoder)
         self.id = remoteItem.id
         self.name = remoteItem.name

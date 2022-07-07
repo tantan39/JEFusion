@@ -5,6 +5,7 @@
 //  Created by Tan Tan on 6/29/22.
 //
 
+import JECore
 import Foundation
 import Combine
 
@@ -19,11 +20,6 @@ struct Endpoint {
     static let fetchReviews: (_ id: String) -> String = { id in
         return "\(ROOT)/\(id)/reviews"
     }
-}
-
-enum Error: Swift.Error {
-    case invalidData
-    case connectionError
 }
 
 protocol HTTPClient {

@@ -5,7 +5,7 @@
 //  Created by Tan Tan on 6/30/22.
 //
 
-import Foundation
+import JECore
 import CoreData
 import Combine
 

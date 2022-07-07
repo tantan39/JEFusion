@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import JECore
 
 @objc(ManagedLike)
 public class ManagedLike: NSManagedObject {

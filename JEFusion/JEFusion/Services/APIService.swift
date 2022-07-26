@@ -39,7 +39,8 @@ protocol HTTPClient {
     func get(url: URL, completion: @escaping (Result<Data, Swift.Error>) -> Void)
 }
 
-class APIService: BusinessLoader {
+public final class APIService: BusinessLoader {
+    
     private var httpClient: HTTPClient
     
     init(httpClient: HTTPClient) {
@@ -51,9 +52,9 @@ class APIService: BusinessLoader {
         let reviews: [Review]?
     }
     
-    func fetchBusinesses(by location: String) -> AnyPublisher<[BusinessModel], Error> {
+    public func fetchBusinesses(by location: String) -> AnyPublisher<[BusinessModel], Error> {
         let url = Endpoint.getBusiness(location: location, limit: 10).url(baseURL: ROOT)
-        
+
         return Deferred {
             Future() { promise in
                 self.httpClient.get(url: url) { response in
@@ -74,7 +75,7 @@ class APIService: BusinessLoader {
         
     }
     
-    func fetchBusinessReviews(with id: String) -> AnyPublisher<[Review], Error> {
+    public func fetchBusinessReviews(with id: String) -> AnyPublisher<[Review], Error> {
         let url = Endpoint.reviews(id: id).url(baseURL: ROOT)
         
         return Deferred {

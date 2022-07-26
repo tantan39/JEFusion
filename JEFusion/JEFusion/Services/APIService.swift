@@ -36,7 +36,7 @@ enum Endpoint {
 }
 
 protocol HTTPClient {
-    func get(url: URL, completion: @escaping (Result<Data, Swift.Error>) -> Void)
+    func get(url: URL, completion: @escaping (Result<(Data, HTTPURLResponse), Swift.Error>) -> Void)
 }
 
 public final class APIService: BusinessLoader {
@@ -59,12 +59,13 @@ public final class APIService: BusinessLoader {
             Future() { promise in
                 self.httpClient.get(url: url) { response in
                     switch response {
-                    case let .success(data):
-                        if let root = try? JSONDecoder().decode(RootItem.self, from: data) {
+                    case .success((let data, let httpResponse)):
+                        if let root = try? JSONDecoder().decode(RootItem.self, from: data), httpResponse.statusCode == 200 {
                             promise(.success(root.businesses ?? []))
                         } else {
                             promise(.failure(.invalidData))
                         }
+                        break
                     case .failure:
                         promise(.failure(.connectionError))
                     }
@@ -82,7 +83,7 @@ public final class APIService: BusinessLoader {
             Future() { promise in
                 self.httpClient.get(url: url) { response in
                     switch response {
-                    case let .success(data):
+                    case .success((let data, _)):
                         if let root = try? JSONDecoder().decode(RootItem.self, from: data) {
                             promise(.success(root.reviews ?? []))
                         } else {

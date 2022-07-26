@@ -21,12 +21,20 @@ class APIServiceTests: XCTestCase {
         }
     }
     
+    func test_fetchBusinesses_responseNon200StatusCode() {
+        let (sut, loader) = makeSUT()
+        
+        expect(sut, toCompleteWith: .failure(.invalidData)) {
+            loader.complete(withStatusCode: 404)
+        }
+    }
+    
     func test_fetchBusinesses_successDeliverEmptyJSON() {
         let (sut, loader) = makeSUT()
         let invalidJSON = "invalid JSON".data(using: .utf8)!
 
         expect(sut, toCompleteWith: .failure(.invalidData)) {
-            loader.complete(with: invalidJSON)
+            loader.complete(withStatusCode: 400, data: invalidJSON)
         }
     }
     
@@ -59,18 +67,21 @@ class APIServiceTests: XCTestCase {
     }
     
     private class HTTPClientStub: HTTPClient {
-        var messages: [(Result<Data, Swift.Error>) -> Void] = []
+        var messages: [(Result<(Data, HTTPURLResponse), Swift.Error>) -> Void] = []
+        var requestURLs: [URL] = []
         
-        func get(url: URL, completion: @escaping (Result<Data, Swift.Error>) -> Void) {
+        func get(url: URL, completion: @escaping (Result<(Data, HTTPURLResponse), Swift.Error>) -> Void) {
+            requestURLs.append(url)
             messages.append(completion)
-        }
-        
-        func complete(with data: Data, at index: Int = 0) {
-            messages[index](.success(data))
         }
         
         func complete(with error: Error, at index: Int = 0) {
             messages[index](.failure(error))
+        }
+        
+        func complete(withStatusCode code: Int, data: Data = .init(), at index: Int = 0) {
+            let response = HTTPURLResponse(url: requestURLs[index], statusCode: code, httpVersion: nil, headerFields: nil)!
+            messages[index](.success((data, response)))
         }
     }
 }

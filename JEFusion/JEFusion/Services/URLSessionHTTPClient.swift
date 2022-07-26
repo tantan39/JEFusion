@@ -11,7 +11,7 @@ import JECore
 class URLSessionHTTPClient: HTTPClient {
     private let session: URLSession = .shared
         
-    func get(url: URL, completion: @escaping (Result<Data, Swift.Error>) -> Void) {
+    func get(url: URL, completion: @escaping (Result<(Data, HTTPURLResponse), Swift.Error>) -> Void) {
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData)
         request.addValue("Bearer \(API_Key)", forHTTPHeaderField: "Authorization")
         
@@ -19,8 +19,8 @@ class URLSessionHTTPClient: HTTPClient {
             completion(Result {
               if let error = error {
                 throw error
-              } else if let data = data {
-                return data
+              } else if let data = data, let response = response as? HTTPURLResponse {
+                return (data, response)
               } else {
                   throw Error.connectionError
               }

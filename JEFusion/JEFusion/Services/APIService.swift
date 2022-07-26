@@ -65,7 +65,7 @@ class APIService: BusinessLoader {
                             promise(.failure(.invalidData))
                         }
                     case .failure:
-                        promise(.failure(.invalidData))
+                        promise(.failure(.connectionError))
                     }
                 }
             }

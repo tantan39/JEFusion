@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B401465828771E1E006D6ACB /* JECore in Frameworks */ = {isa = PBXBuildFile; productRef = B401465728771E1E006D6ACB /* JECore */; };
+		B491112C288F7F78004AD558 /* APIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491112B288F7F78004AD558 /* APIServiceTests.swift */; };
 		B4E8E5E5286CDB8100A6B33F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E5E4286CDB8100A6B33F /* AppDelegate.swift */; };
 		B4E8E5E7286CDB8100A6B33F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E5E6286CDB8100A6B33F /* SceneDelegate.swift */; };
 		B4E8E5E9286CDB8100A6B33F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E5E8286CDB8100A6B33F /* HomeViewController.swift */; };
@@ -29,8 +30,20 @@
 		B4E8E626286DF84100A6B33F /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E625286DF84100A6B33F /* DetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B4911126288F7F55004AD558 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B4E8E5D9286CDB8100A6B33F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4E8E5E0286CDB8100A6B33F;
+			remoteInfo = JEFusion;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		B401465528771C42006D6ACB /* JECore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = JECore; sourceTree = "<group>"; };
+		B4911122288F7F55004AD558 /* JEFusionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JEFusionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B491112B288F7F78004AD558 /* APIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceTests.swift; sourceTree = "<group>"; };
 		B4E8E5E1286CDB8100A6B33F /* JEFusion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JEFusion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4E8E5E4286CDB8100A6B33F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4E8E5E6286CDB8100A6B33F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,6 +67,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B491111F288F7F55004AD558 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B4E8E5DE286CDB8100A6B33F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -73,11 +93,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B4911123288F7F55004AD558 /* JEFusionTests */ = {
+			isa = PBXGroup;
+			children = (
+				B491112B288F7F78004AD558 /* APIServiceTests.swift */,
+			);
+			path = JEFusionTests;
+			sourceTree = "<group>";
+		};
 		B4E8E5D8286CDB8100A6B33F = {
 			isa = PBXGroup;
 			children = (
 				B401465528771C42006D6ACB /* JECore */,
 				B4E8E5E3286CDB8100A6B33F /* JEFusion */,
+				B4911123288F7F55004AD558 /* JEFusionTests */,
 				B4E8E5E2286CDB8100A6B33F /* Products */,
 				B401465628771E1E006D6ACB /* Frameworks */,
 			);
@@ -87,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				B4E8E5E1286CDB8100A6B33F /* JEFusion.app */,
+				B4911122288F7F55004AD558 /* JEFusionTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,6 +190,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B4911121288F7F55004AD558 /* JEFusionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B491112A288F7F55004AD558 /* Build configuration list for PBXNativeTarget "JEFusionTests" */;
+			buildPhases = (
+				B491111E288F7F55004AD558 /* Sources */,
+				B491111F288F7F55004AD558 /* Frameworks */,
+				B4911120288F7F55004AD558 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B4911127288F7F55004AD558 /* PBXTargetDependency */,
+			);
+			name = JEFusionTests;
+			productName = JEFusionTests;
+			productReference = B4911122288F7F55004AD558 /* JEFusionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B4E8E5E0286CDB8100A6B33F /* JEFusion */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B4E8E5F5286CDB8400A6B33F /* Build configuration list for PBXNativeTarget "JEFusion" */;
@@ -191,6 +239,11 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
+					B4911121288F7F55004AD558 = {
+						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
+						TestTargetID = B4E8E5E0286CDB8100A6B33F;
+					};
 					B4E8E5E0286CDB8100A6B33F = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
@@ -213,11 +266,19 @@
 			projectRoot = "";
 			targets = (
 				B4E8E5E0286CDB8100A6B33F /* JEFusion */,
+				B4911121288F7F55004AD558 /* JEFusionTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B4911120288F7F55004AD558 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B4E8E5DF286CDB8100A6B33F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -231,6 +292,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B491111E288F7F55004AD558 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B491112C288F7F78004AD558 /* APIServiceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B4E8E5DD286CDB8100A6B33F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -255,6 +324,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B4911127288F7F55004AD558 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B4E8E5E0286CDB8100A6B33F /* JEFusion */;
+			targetProxy = B4911126288F7F55004AD558 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		B4E8E5EA286CDB8100A6B33F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -275,6 +352,57 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		B4911128288F7F55004AD558 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FL29S3YYFY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tantt.JEFusionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JEFusion.app/JEFusion";
+			};
+			name = Debug;
+		};
+		B4911129288F7F55004AD558 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FL29S3YYFY;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tantt.JEFusionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JEFusion.app/JEFusion";
+			};
+			name = Release;
+		};
 		B4E8E5F3286CDB8400A6B33F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -450,6 +578,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B491112A288F7F55004AD558 /* Build configuration list for PBXNativeTarget "JEFusionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4911128288F7F55004AD558 /* Debug */,
+				B4911129288F7F55004AD558 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B4E8E5DC286CDB8100A6B33F /* Build configuration list for PBXProject "JEFusion" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

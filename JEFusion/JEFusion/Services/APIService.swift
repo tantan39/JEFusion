@@ -10,15 +10,28 @@ import Foundation
 import Combine
 
 let API_Key = "kWcQi-_11RNr5HC7w8wAe-BQyxndGeGY84AGjtSq8JurIWBrXbCcyKLx02k0llcMTc2ytj-Yga-JUHNX1DP1voqPR2yPHxh0m7jhJFPJDV23fpPNBWXTAheM-qG8YnYx"
-let ROOT = "https://api.yelp.com/v3/businesses"
+let ROOT = URL(string: "https://api.yelp.com/v3/businesses")!
 
-struct Endpoint {
-    static let fetchBusinesses: (_ location: String, _ limit: Int) -> String = { location, limit in
-        return "\(ROOT)/search?location=\(location)&limit=\(limit)"
-    }
+enum Endpoint {
+    case getBusiness(location: String, limit: Int)
+    case reviews(id: String)
     
-    static let fetchReviews: (_ id: String) -> String = { id in
-        return "\(ROOT)/\(id)/reviews"
+    func url(baseURL: URL) -> URL {
+        switch self {
+        case .getBusiness(let location, let limit):
+            var component = URLComponents()
+            component.scheme = baseURL.scheme
+            component.host = baseURL.host
+            component.path = baseURL.path + "/search"
+            component.queryItems = [
+                URLQueryItem(name: "location", value: "\(location)"),
+                URLQueryItem(name: "limit", value: "\(limit)"),
+            ]
+            return component.url!
+
+        case .reviews(let id):
+            return URL(string:"\(baseURL)/\(id)/reviews")!
+        }
     }
 }
 
@@ -39,8 +52,7 @@ class APIService: BusinessLoader {
     }
     
     func fetchBusinesses(by location: String) -> AnyPublisher<[BusinessModel], Error> {
-        let strUrl = Endpoint.fetchBusinesses(location, 10).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        let url = URL(string: strUrl)!
+        let url = Endpoint.getBusiness(location: location, limit: 10).url(baseURL: ROOT)
         
         return Deferred {
             Future() { promise in
@@ -63,7 +75,7 @@ class APIService: BusinessLoader {
     }
     
     func fetchBusinessReviews(with id: String) -> AnyPublisher<[Review], Error> {
-        let url = URL(string: Endpoint.fetchReviews(id))!
+        let url = Endpoint.reviews(id: id).url(baseURL: ROOT)
         
         return Deferred {
             Future() { promise in

@@ -29,14 +29,23 @@ class APIServiceTests: XCTestCase {
         }
     }
     
-    func test_fetchBusinesses_successDeliverEmptyJSON() {
+    func test_fetchBusinesses_responseErrorOn200StatusCodeWithInvalidJSON() {
         let (sut, loader) = makeSUT()
         let invalidJSON = "invalid JSON".data(using: .utf8)!
 
         expect(sut, toCompleteWith: .failure(.invalidData)) {
-            loader.complete(withStatusCode: 400, data: invalidJSON)
+            loader.complete(withStatusCode: 200, data: invalidJSON)
         }
     }
+    
+//    func test_fetchBusinesses_responseNoItemsOn200HTTPReponseWithEmptyJSONList() {
+//        let (sut, loader) = makeSUT()
+//        let emptyJSONList = "{\"businesses\": []}".data(using: .utf8)!
+//
+//        expect(sut, toCompleteWith: .success([])) {
+//            loader.complete(withStatusCode: 200, data: emptyJSONList)
+//        }
+//    }
     
     private func makeSUT() -> (APIService, HTTPClientStub) {
         let loader = HTTPClientStub()
@@ -56,7 +65,7 @@ class APIServiceTests: XCTestCase {
                 case .failure(let error):
                     captureResults.append(.failure(error))
                 case .finished:
-                    assertionFailure("finished")
+                    break
                 }
             }, receiveValue: { captureResults.append(.success($0)) })
             .store(in: &cancellables)

@@ -47,6 +47,52 @@ class APIServiceTests: XCTestCase {
         }
     }
     
+    func test_fetchBusinesses_responseListItemOn200HTTPReponseWithJSONList() {
+        let (sut, loader) = makeSUT()
+        let item1 = BusinessModel(id: "id1", name: "a name", rating: 0, imageURL: "http://any-url.com", displayAddress: ["a"], categories: ["category1"], isLiked: false)
+        
+        let itemJSON1: [String: Any] = [
+            "id": item1.id,
+            "name": item1.name,
+            "image_url": item1.imageURL,
+            "rating": item1.rating,
+            "categories": [
+                [
+                    "title": "category1"
+                ],
+            ],
+            "location": [
+                "display_address": item1.displayAddress
+            ]
+        ]
+        
+        let item2 = BusinessModel(id: "id2", name: "other name", rating: 0, imageURL: "http://other-any-url.com", displayAddress: ["b"], categories: ["category2"], isLiked: false)
+        
+        let itemJSON2: [String: Any] = [
+            "id": item2.id,
+            "name": item2.name,
+            "image_url": item2.imageURL,
+            "rating": item2.rating,
+            "categories": [
+                [
+                    "title": "category2"
+                ],
+            ],
+            "location": [
+                "display_address": item2.displayAddress
+            ]
+        ]
+        
+        let items = [item1, item2]
+        
+        let jsonList = ["businesses": [itemJSON1, itemJSON2]]
+
+        expect(sut, toCompleteWith: .success(items)) {
+            let json = try! JSONSerialization.data(withJSONObject: jsonList, options: .prettyPrinted)
+            loader.complete(withStatusCode: 200, data: json)
+        }
+    }
+    
     private func makeSUT() -> (APIService, HTTPClientStub) {
         let loader = HTTPClientStub()
         let sut = APIService(httpClient: loader)

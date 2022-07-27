@@ -9,7 +9,11 @@ import Foundation
 import JECore
 
 class URLSessionHTTPClient: HTTPClient {
-    private let session: URLSession = .shared
+    private let session: URLSession
+    
+    init(session: URLSession = .shared) {
+        self.session = session
+    }
         
     func get(url: URL, completion: @escaping (Result<(Data, HTTPURLResponse), Swift.Error>) -> Void) {
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData)

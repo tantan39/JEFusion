@@ -37,7 +37,6 @@ public final class APIService: BusinessLoader {
                         } else {
                             promise(.failure(.invalidData))
                         }
-                        break
                     case .failure:
                         promise(.failure(.connectionError))
                     }

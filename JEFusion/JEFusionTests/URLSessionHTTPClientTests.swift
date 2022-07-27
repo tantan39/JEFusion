@@ -23,7 +23,6 @@ class URLSessionHTTPClientTests: XCTestCase {
     }
     
     private class URLSessionSpy: URLSession {
-        var requestURLs: [URL] = []
         private var stubs: [URL: URLSessionDataTaskSpy] = [:]
         
         func stub(request: URL, task: URLSessionDataTaskSpy) {
@@ -32,9 +31,7 @@ class URLSessionHTTPClientTests: XCTestCase {
         
         override func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
             
-            requestURLs.append(request.url!)
             return stubs[request.url!] ?? FakeURLSessionDataTask()
-            
         }
     }
     

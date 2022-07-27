@@ -55,10 +55,8 @@ class APIServiceTests: XCTestCase {
         
         let items = [item1.model, item2.model]
         
-        let jsonList = ["businesses": [item1.json, item2.json]]
-
         expect(sut, toCompleteWith: .success(items)) {
-            let json = try! JSONSerialization.data(withJSONObject: jsonList, options: .prettyPrinted)
+            let json = makeJSONItems([item1.json, item2.json])
             loader.complete(withStatusCode: 200, data: json)
         }
     }
@@ -88,6 +86,11 @@ class APIServiceTests: XCTestCase {
         ]
         
         return (model, json)
+    }
+    
+    private func makeJSONItems(_ items: [[String: Any]]) -> Data {
+        let json = ["businesses": items]
+        return try! JSONSerialization.data(withJSONObject: json, options: .prettyPrinted)
     }
     
     private var cancellables = Set<AnyCancellable>()

@@ -38,14 +38,14 @@ class APIServiceTests: XCTestCase {
         }
     }
     
-//    func test_fetchBusinesses_responseNoItemsOn200HTTPReponseWithEmptyJSONList() {
-//        let (sut, loader) = makeSUT()
-//        let emptyJSONList = "{\"businesses\": []}".data(using: .utf8)!
-//
-//        expect(sut, toCompleteWith: .success([])) {
-//            loader.complete(withStatusCode: 200, data: emptyJSONList)
-//        }
-//    }
+    func test_fetchBusinesses_responseNoItemsOn200HTTPReponseWithEmptyJSONList() {
+        let (sut, loader) = makeSUT()
+        let emptyJSONList = "{\"businesses\": []}".data(using: .utf8)!
+
+        expect(sut, toCompleteWith: .success([])) {
+            loader.complete(withStatusCode: 200, data: emptyJSONList)
+        }
+    }
     
     private func makeSUT() -> (APIService, HTTPClientStub) {
         let loader = HTTPClientStub()

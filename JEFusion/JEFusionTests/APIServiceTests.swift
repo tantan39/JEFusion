@@ -61,10 +61,20 @@ class APIServiceTests: XCTestCase {
         }
     }
     
-    private func makeSUT() -> (APIService, HTTPClientStub) {
+    // MARK: - Helpers
+    
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (APIService, HTTPClientStub) {
         let loader = HTTPClientStub()
         let sut = APIService(httpClient: loader)
+        trackMemoryLeaks(loader, file: file, line: line)
+        trackMemoryLeaks(sut, file: file, line: line)
         return (sut, loader)
+    }
+    
+    private func trackMemoryLeaks(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Instance should have been dellocated. Potential memory leak", file: file, line: line)
+        }
     }
     
     private func makeModel(id: String, name: String, rating: Double, imageURL: String, displayAddress: [String], categories: String) -> (model: BusinessModel, json: [String: Any]) {

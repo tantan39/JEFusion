@@ -46,46 +46,16 @@ class APIServiceTests: XCTestCase {
             loader.complete(withStatusCode: 200, data: emptyJSONList)
         }
     }
-    
+
     func test_fetchBusinesses_responseListItemOn200HTTPReponseWithJSONList() {
         let (sut, loader) = makeSUT()
-        let item1 = BusinessModel(id: "id1", name: "a name", rating: 0, imageURL: "http://any-url.com", displayAddress: ["a"], categories: ["category1"], isLiked: false)
+        let item1 = makeModel(id: "id", name: "a name", rating: 0, imageURL: "http://any-url.com", displayAddress: ["a"], categories: "category")
         
-        let itemJSON1: [String: Any] = [
-            "id": item1.id,
-            "name": item1.name,
-            "image_url": item1.imageURL,
-            "rating": item1.rating,
-            "categories": [
-                [
-                    "title": "category1"
-                ],
-            ],
-            "location": [
-                "display_address": item1.displayAddress
-            ]
-        ]
+        let item2 = makeModel(id: "id2", name: "other name", rating: 0, imageURL: "http://other-any-url.com", displayAddress: ["b"], categories: "category2")
         
-        let item2 = BusinessModel(id: "id2", name: "other name", rating: 0, imageURL: "http://other-any-url.com", displayAddress: ["b"], categories: ["category2"], isLiked: false)
+        let items = [item1.model, item2.model]
         
-        let itemJSON2: [String: Any] = [
-            "id": item2.id,
-            "name": item2.name,
-            "image_url": item2.imageURL,
-            "rating": item2.rating,
-            "categories": [
-                [
-                    "title": "category2"
-                ],
-            ],
-            "location": [
-                "display_address": item2.displayAddress
-            ]
-        ]
-        
-        let items = [item1, item2]
-        
-        let jsonList = ["businesses": [itemJSON1, itemJSON2]]
+        let jsonList = ["businesses": [item1.json, item2.json]]
 
         expect(sut, toCompleteWith: .success(items)) {
             let json = try! JSONSerialization.data(withJSONObject: jsonList, options: .prettyPrinted)
@@ -97,6 +67,27 @@ class APIServiceTests: XCTestCase {
         let loader = HTTPClientStub()
         let sut = APIService(httpClient: loader)
         return (sut, loader)
+    }
+    
+    private func makeModel(id: String, name: String, rating: Double, imageURL: String, displayAddress: [String], categories: String) -> (model: BusinessModel, json: [String: Any]) {
+        let model = BusinessModel(id: "id1", name: "a name", rating: 0, imageURL: "http://any-url.com", displayAddress: ["a"], categories: [categories], isLiked: false)
+        
+        let json: [String: Any] = [
+            "id": model.id,
+            "name": model.name,
+            "image_url": model.imageURL,
+            "rating": model.rating,
+            "categories": [
+                [
+                    "title": categories
+                ],
+            ],
+            "location": [
+                "display_address": model.displayAddress
+            ]
+        ]
+        
+        return (model, json)
     }
     
     private var cancellables = Set<AnyCancellable>()

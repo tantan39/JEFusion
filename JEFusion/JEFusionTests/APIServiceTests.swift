@@ -61,6 +61,22 @@ class APIServiceTests: XCTestCase {
         }
     }
     
+    func test_load_doesNotDeliverReultAfterInstanceHasBeenDellocated() {
+        let loader = HTTPClientStub()
+        var sut: APIService? = APIService(httpClient: loader)
+        var captureResults: [Result<[BusinessModel], Error>] = []
+        
+        sut?.fetchBusinesses(by: "location")
+            .sink(receiveCompletion: { _ in }, receiveValue: { captureResults.append(.success($0)) })
+            .store(in: &cancellables)
+        
+        sut = nil
+        
+        loader.complete(withStatusCode: 200, data: makeJSONItems([]))
+        
+        XCTAssertEqual(captureResults, [])
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (APIService, HTTPClientStub) {

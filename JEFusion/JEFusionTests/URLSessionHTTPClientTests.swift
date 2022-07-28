@@ -10,8 +10,14 @@ import XCTest
 @testable import JEFusion
 
 class URLSessionHTTPClientTests: XCTestCase {
-    func test_getFromURL_performGETrequestWithURL() {
+    override func setUp() {
         URLProtocolStub.startInterceptingRequests()
+    }
+    override class func tearDown() {
+        URLProtocolStub.stopInterceptingRequests()
+    }
+    
+    func test_getFromURL_performGETrequestWithURL() {
         let url = URL(string: "http://any-url.com")!
                 
         let sut = URLSessionHTTPClient()
@@ -25,11 +31,9 @@ class URLSessionHTTPClientTests: XCTestCase {
         
         sut.get(url: url, completion: { _ in })
         wait(for: [exp], timeout: 1.0)
-        URLProtocolStub.stopInterceptingRequests()
     }
     
     func test_getFromURL_failsOnRequestError() {
-        URLProtocolStub.startInterceptingRequests()
         let url = URL(string: "http://any-url.com")!
         let error = NSError(domain: "any error", code: 1)
 
@@ -49,7 +53,6 @@ class URLSessionHTTPClientTests: XCTestCase {
             exp.fulfill()
         })
         wait(for: [exp], timeout: 1.0)
-        URLProtocolStub.stopInterceptingRequests()
     }
     
     // MARK: - Helpers

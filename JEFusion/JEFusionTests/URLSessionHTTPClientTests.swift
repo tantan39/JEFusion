@@ -55,6 +55,27 @@ class URLSessionHTTPClientTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    func test_getFromURL_failsOnAllNilValues() {
+        let url = URL(string: "http://any-url.com")!
+
+        URLProtocolStub.stub(data: nil, response: nil, error: nil)
+        
+        let sut = URLSessionHTTPClient()
+        let exp = expectation(description: "Wait for request")
+        
+        sut.get(url: url, completion: { result in
+            switch result {
+            case .failure:
+                break
+            default:
+                XCTFail("Expected failure, got \(result) instead")
+
+            }
+            exp.fulfill()
+        })
+        wait(for: [exp], timeout: 1.0)
+    }
+    
     // MARK: - Helpers
     
     private class URLProtocolStub: URLProtocol {

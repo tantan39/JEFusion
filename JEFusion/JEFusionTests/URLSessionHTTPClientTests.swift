@@ -11,9 +11,11 @@ import XCTest
 
 class URLSessionHTTPClientTests: XCTestCase {
     override func setUp() {
+        super.setUp()
         URLProtocolStub.startInterceptingRequests()
     }
-    override class func tearDown() {
+    override func tearDown() {
+        super.tearDown()
         URLProtocolStub.stopInterceptingRequests()
     }
     
@@ -76,6 +78,31 @@ class URLSessionHTTPClientTests: XCTestCase {
         wait(for: [exp], timeout: 1.0)
     }
     
+    func test_getFromURL_succeedsOnHTTPResponseWithData() {
+        let url = URL(string: "http://any-url.com")!
+        let anyData = "any data".data(using: .utf8)!
+        let response = HTTPURLResponse(url: url, statusCode: 200, httpVersion: nil, headerFields: nil)!
+        
+        URLProtocolStub.stub(data: anyData, response: response, error: nil)
+        
+        let sut = URLSessionHTTPClient()
+        let exp = expectation(description: "Wait for request")
+        
+        sut.get(url: url, completion: { result in
+            switch result {
+            case .success((let receiveData, let receiveResponse)):
+                XCTAssertEqual(receiveData, anyData)
+                XCTAssertEqual(receiveResponse.url, response.url)
+                XCTAssertEqual(receiveResponse.statusCode, response.statusCode)
+            default:
+                XCTFail("Expected failure, got \(result) instead")
+
+            }
+            exp.fulfill()
+        })
+        wait(for: [exp], timeout: 1.0)
+    }
+    
     // MARK: - Helpers
     
     private class URLProtocolStub: URLProtocol {
@@ -103,6 +130,7 @@ class URLSessionHTTPClientTests: XCTestCase {
         static func stopInterceptingRequests() {
             URLProtocol.unregisterClass(URLProtocolStub.self)
             stub = nil
+            requestObserver = nil
         }
         
         override class func canInit(with request: URLRequest) -> Bool {
@@ -130,7 +158,9 @@ class URLSessionHTTPClientTests: XCTestCase {
             client?.urlProtocolDidFinishLoading(self)
         }
         
-        override func stopLoading() { }
+        override func stopLoading() {
+            URLProtocolStub.requestObserver = nil
+        }
     }
     
     private class FakeURLSessionDataTask: URLSessionDataTask {

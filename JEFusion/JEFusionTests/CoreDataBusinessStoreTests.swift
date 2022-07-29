@@ -30,6 +30,33 @@ class CoreDataBusinessStoreTests: XCTestCase {
         
     }
     
+    func test_retrieveBusinessLike_deliversFoundValues() {
+        let sut = makeSUT()
+        var result: Result<[LikeModel], Error>?
+        let exp = expectation(description: "Wait for loading")
+        let item1 = LikeModel(businessId: "id", isLiked: false)
+        let item2 = LikeModel(businessId: "id1", isLiked: false)
+        
+        sut.insertLikeModel(item1)
+            .sink(receiveCompletion: { _ in }) { _ in }
+            .store(in: &cancellables)
+
+        sut.insertLikeModel(item2)
+            .sink(receiveCompletion: { _ in }) { _ in }
+            .store(in: &cancellables)
+        
+        sut.retrieveBusinessLike()
+            .sink(receiveCompletion: { _ in }, receiveValue: { items in
+                result = .success(items)
+                exp.fulfill()
+            })
+            .store(in: &cancellables)
+        
+        wait(for: [exp], timeout: 1.0)
+        XCTAssertEqual(result, .success([item1, item2]))
+        
+    }
+    
     // MARK: - Helper
     
     private func makeSUT() -> BusinessStore {

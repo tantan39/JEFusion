@@ -15,25 +15,12 @@ class CoreDataBusinessStoreTests: XCTestCase {
     
     func test_retrieveBusinessLike_deliversEmpty() {
         let sut = makeSUT()
-        var result: Result<[LikeModel], Error>?
-        let exp = expectation(description: "Wait for loading")
         
-        sut.retrieveBusinessLike()
-            .sink(receiveCompletion: { _ in }, receiveValue: { items in
-                result = .success(items)
-                exp.fulfill()
-            })
-            .store(in: &cancellables)
-        
-        wait(for: [exp], timeout: 1.0)
-        XCTAssertEqual(result, .success([]))
-        
+        expect(sut, toRetrieve: .success([]))
     }
     
     func test_retrieveBusinessLike_deliversFoundValues() {
         let sut = makeSUT()
-        var result: Result<[LikeModel], Error>?
-        let exp = expectation(description: "Wait for loading")
         let item1 = LikeModel(businessId: "id", isLiked: false)
         let item2 = LikeModel(businessId: "id1", isLiked: false)
         
@@ -45,15 +32,7 @@ class CoreDataBusinessStoreTests: XCTestCase {
             .sink(receiveCompletion: { _ in }) { _ in }
             .store(in: &cancellables)
         
-        sut.retrieveBusinessLike()
-            .sink(receiveCompletion: { _ in }, receiveValue: { items in
-                result = .success(items)
-                exp.fulfill()
-            })
-            .store(in: &cancellables)
-        
-        wait(for: [exp], timeout: 1.0)
-        XCTAssertEqual(result, .success([item1, item2]))
+        expect(sut, toRetrieve: .success([item1, item2]))
         
     }
     
@@ -63,5 +42,28 @@ class CoreDataBusinessStoreTests: XCTestCase {
         let storeURL = URL(fileURLWithPath: "/dev/null")
         let sut = try! CoreDataBusinessStore(storeURL: storeURL)
         return sut
+    }
+    
+    private func expect(_ sut: BusinessStore, toRetrieve expectedResult: Result<[LikeModel], Error>, file: StaticString = #filePath, line: UInt = #line) {
+        var retrievedResult: Result<[LikeModel], Error>?
+        
+        let exp = expectation(description: "Wait for loading")
+        
+        sut.retrieveBusinessLike()
+            .sink(receiveCompletion: { result in
+                switch result {
+                case .failure(let error):
+                    retrievedResult = .failure(error)
+                default:
+                    break
+                }
+            }, receiveValue: { items in
+                retrievedResult = .success(items)
+                exp.fulfill()
+            })
+            .store(in: &cancellables)
+            
+        wait(for: [exp], timeout: 1.0)
+        XCTAssertEqual(retrievedResult, expectedResult, file: file, line: line)
     }
 }

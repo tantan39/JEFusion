@@ -53,7 +53,8 @@ public final class APIService: BusinessLoader {
         
         return Deferred {
             Future() { promise in
-                self.httpClient.get(url: url) { response in
+                self.httpClient.get(url: url) { [weak self] response in
+                    guard self != nil else { return }
                     switch response {
                     case .success((let data, _)):
                         if let root = try? JSONDecoder().decode(RootItem.self, from: data) {
@@ -62,7 +63,7 @@ public final class APIService: BusinessLoader {
                             promise(.failure(.invalidData))
                         }
                     case .failure:
-                        promise(.failure(.invalidData))
+                        promise(.failure(.connectionError))
                     }
                 }
             }

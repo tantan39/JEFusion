@@ -61,6 +61,61 @@ class APIServiceTests: XCTestCase {
         }
     }
     
+    func test_fetchBusinessReviews_failingDeliverConnectionError() {
+        let (sut, loader) = makeSUT()
+        
+        expectFetchBusinessReviews(sut, toCompleteWith: .failure(.connectionError)) {
+            loader.complete(with: .connectionError)
+        }
+    }
+    
+    func test_fetchBusinessReviews_responseNon200StatusCode() {
+        let (sut, loader) = makeSUT()
+
+        expectFetchBusinessReviews(sut, toCompleteWith: .failure(.invalidData)) {
+            loader.complete(withStatusCode: 404)
+        }
+    }
+
+    func test_fetchBusinessReviews_responseErrorOn200StatusCodeWithInvalidJSON() {
+        let (sut, loader) = makeSUT()
+        let invalidJSON = "invalid JSON".data(using: .utf8)!
+
+        expectFetchBusinessReviews(sut, toCompleteWith: .failure(.invalidData)) {
+            loader.complete(withStatusCode: 200, data: invalidJSON)
+        }
+    }
+
+    func test_fetchBusinessReviews_responseNoItemsOn200HTTPReponseWithEmptyJSONList() {
+        let (sut, loader) = makeSUT()
+        let emptyJSONList = "{\"businesses\": []}".data(using: .utf8)!
+
+        expectFetchBusinessReviews(sut, toCompleteWith: .success([])) {
+            loader.complete(withStatusCode: 200, data: emptyJSONList)
+        }
+    }
+
+    func test_fetchBusinessReviews_responseListItemOn200HTTPReponseWithJSONList() {
+        let (sut, loader) = makeSUT()
+
+        let item1 = Review(id: "id1", text: "review1", user: Review.User(id: "user1", name: "name"))
+        let itemJSON1: [String: Any] = [
+            "id": item1.id,
+            "text": item1.text,
+            "user": [
+                "id": item1.user.id,
+                "name": item1.user.name
+            ]
+        ]
+        
+        let items = [item1]
+        let json = ["reviews": [itemJSON1]]
+        expectFetchBusinessReviews(sut, toCompleteWith: .success(items)) {
+            let data = try! JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed)
+            loader.complete(withStatusCode: 200, data: data)
+        }
+    }
+    
     func test_load_doesNotDeliverReultAfterInstanceHasBeenDellocated() {
         let loader = HTTPClientStub()
         var sut: APIService? = APIService(httpClient: loader)
@@ -73,6 +128,23 @@ class APIServiceTests: XCTestCase {
         sut = nil
         
         loader.complete(withStatusCode: 200, data: makeJSONItems([]))
+        
+        XCTAssertEqual(captureResults, [])
+    }
+    
+    func test_fetchBusinessReviews_doesNotDeliverReultAfterInstanceHasBeenDellocated() {
+        let loader = HTTPClientStub()
+        var sut: APIService? = APIService(httpClient: loader)
+        var captureResults: [Result<[Review], Error>] = []
+        
+        sut?.fetchBusinessReviews(with: "id")
+            .sink(receiveCompletion: { _ in }, receiveValue: { captureResults.append(.success($0)) })
+            .store(in: &cancellables)
+        
+        sut = nil
+        let json = ["reviews": []]
+        let data = try! JSONSerialization.data(withJSONObject: json, options: .fragmentsAllowed)
+        loader.complete(withStatusCode: 200, data: data)
         
         XCTAssertEqual(captureResults, [])
     }
@@ -126,6 +198,26 @@ class APIServiceTests: XCTestCase {
         var captureResults: [Result<[BusinessModel], Error>] = []
         
         sut.fetchBusinesses(by: "a location")
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .failure(let error):
+                    captureResults.append(.failure(error))
+                case .finished:
+                    break
+                }
+            }, receiveValue: { captureResults.append(.success($0)) })
+            .store(in: &cancellables)
+        
+        action()
+        
+        XCTAssertEqual(captureResults, [result])
+    }
+    
+    private func expectFetchBusinessReviews(_ sut: APIService, toCompleteWith result: Result<[Review], Error>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+        
+        var captureResults: [Result<[Review], Error>] = []
+        
+        sut.fetchBusinessReviews(with: "id")
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .failure(let error):

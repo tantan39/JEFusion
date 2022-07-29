@@ -10,6 +10,7 @@
 		B401465828771E1E006D6ACB /* JECore in Frameworks */ = {isa = PBXBuildFile; productRef = B401465728771E1E006D6ACB /* JECore */; };
 		B443EAE028918E7F009CF3FF /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B443EADF28918E7F009CF3FF /* Endpoint.swift */; };
 		B443EAE22891CE53009CF3FF /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B443EAE12891CE53009CF3FF /* URLSessionHTTPClientTests.swift */; };
+		B443EAE428936395009CF3FF /* CoreDataBusinessStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B443EAE328936395009CF3FF /* CoreDataBusinessStoreTests.swift */; };
 		B491112C288F7F78004AD558 /* APIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B491112B288F7F78004AD558 /* APIServiceTests.swift */; };
 		B4E8E5E5286CDB8100A6B33F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E5E4286CDB8100A6B33F /* AppDelegate.swift */; };
 		B4E8E5E7286CDB8100A6B33F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4E8E5E6286CDB8100A6B33F /* SceneDelegate.swift */; };
@@ -46,6 +47,7 @@
 		B401465528771C42006D6ACB /* JECore */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = JECore; sourceTree = "<group>"; };
 		B443EADF28918E7F009CF3FF /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		B443EAE12891CE53009CF3FF /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
+		B443EAE328936395009CF3FF /* CoreDataBusinessStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataBusinessStoreTests.swift; sourceTree = "<group>"; };
 		B4911122288F7F55004AD558 /* JEFusionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JEFusionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B491112B288F7F78004AD558 /* APIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIServiceTests.swift; sourceTree = "<group>"; };
 		B4E8E5E1286CDB8100A6B33F /* JEFusion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JEFusion.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +104,7 @@
 			children = (
 				B491112B288F7F78004AD558 /* APIServiceTests.swift */,
 				B443EAE12891CE53009CF3FF /* URLSessionHTTPClientTests.swift */,
+				B443EAE328936395009CF3FF /* CoreDataBusinessStoreTests.swift */,
 			);
 			path = JEFusionTests;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B443EAE428936395009CF3FF /* CoreDataBusinessStoreTests.swift in Sources */,
 				B491112C288F7F78004AD558 /* APIServiceTests.swift in Sources */,
 				B443EAE22891CE53009CF3FF /* URLSessionHTTPClientTests.swift in Sources */,
 			);

@@ -36,6 +36,24 @@ class CoreDataBusinessStoreTests: XCTestCase {
         
     }
     
+    func test_retrieveBusinessLike_hasNoSideEffectsDeliversFoundValues() {
+        let sut = makeSUT()
+        let item1 = LikeModel(businessId: "id", isLiked: false)
+        let item2 = LikeModel(businessId: "id1", isLiked: false)
+        
+        sut.insertLikeModel(item1)
+            .sink(receiveCompletion: { _ in }) { _ in }
+            .store(in: &cancellables)
+
+        sut.insertLikeModel(item2)
+            .sink(receiveCompletion: { _ in }) { _ in }
+            .store(in: &cancellables)
+        
+        expect(sut, toRetrieve: .success([item1, item2]))
+        expect(sut, toRetrieve: .success([item1, item2]))
+        
+    }
+    
     // MARK: - Helper
     
     private func makeSUT() -> BusinessStore {

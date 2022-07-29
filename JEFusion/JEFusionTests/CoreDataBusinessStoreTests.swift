@@ -78,6 +78,35 @@ class CoreDataBusinessStoreTests: XCTestCase {
         XCTAssertNil(receivedError)
     }
     
+    func test_updateLikeModel_deliversNoError() {
+        let sut = makeSUT()
+        let item1 = LikeModel(businessId: "id1", isLiked: false)
+        var receivedError: Error?
+        
+        sut.insertLikeModel(item1)
+            .sink(receiveCompletion: { _ in }) { _ in }
+            .store(in: &cancellables)
+        
+        let exp = expectation(description: "Wait for loading")
+        sut.updateLikeModel("id1", isLiked: true)
+            .sink(receiveCompletion: { result in
+                switch result {
+                case let .failure(error):
+                    receivedError = error
+                    exp.fulfill()
+                default:
+                    break
+                }
+            }) { _ in
+                exp.fulfill()
+            }
+            .store(in: &cancellables)
+        
+        wait(for: [exp], timeout: 1.0)
+        expect(sut, toRetrieve: .success([LikeModel(businessId: "id1", isLiked: true)]))
+        XCTAssertNil(receivedError)
+    }
+    
     // MARK: - Helper
     
     private func makeSUT() -> BusinessStore {

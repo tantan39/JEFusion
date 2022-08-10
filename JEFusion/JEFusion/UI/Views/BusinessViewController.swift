@@ -9,7 +9,7 @@ import UIKit
 import Combine
 import JECore
 
-class BusinessViewController: UITableViewController {
+class BusinessViewController: UITableViewController, UISearchResultsUpdating {
     private var viewModel: BusinessViewModel?
     private var cancellables = Set<AnyCancellable>()
     var onSelected: ((Int) -> Void)?
@@ -20,6 +20,12 @@ class BusinessViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Typing to search...."
+        navigationItem.searchController = searchController
+        
         self.navigationItem.title = "Restaurants"
         view.backgroundColor = .white
         tableView.register(BusinessItemCell.self, forCellReuseIdentifier: "BusinessItemCell")
@@ -45,6 +51,25 @@ class BusinessViewController: UITableViewController {
         snapshot.appendSections([0])
         snapshot.appendItems(items, toSection: 0)
         self.datasource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text, !text.isEmpty else { return }
+        search(with: text);
+    }
+    
+    private var searchWorkItem: DispatchWorkItem?
+    private func search(with keyword: String) {
+        searchWorkItem?.cancel()
+        let workItem: DispatchWorkItem = DispatchWorkItem {
+            // Make calling search requests
+            print("Call request with \(keyword)")
+            DispatchQueue.global().asyncAfter(deadline: .now() + 1) {
+                print("Search request success for \(keyword)")
+            }
+        }
+        searchWorkItem = workItem
+        DispatchQueue.global().asyncAfter(deadline: .now() + .seconds(1), execute: workItem)
     }
     
     // MARK: - TableView Datasource/Delegate
